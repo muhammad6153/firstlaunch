@@ -1,4 +1,4 @@
-.service-card figure {
+.talent-track-card figure {
   height: 200px;
   width: 200px;
   background-position: center;
@@ -7,6 +7,6 @@
   transition: background-size 400ms ease-in-out;
 }
 
-.service-card:hover figure {
+.talent-track-card:hover figure {
   background-size: 150%;
 }

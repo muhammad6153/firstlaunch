@@ -64,7 +64,7 @@ export class ServicePageComponent implements OnInit, OnDestroy {
         .pipe(
           concatMap((params) => {
             return this.httpClient
-              .get<Service[]>("/assets/data/services.json")
+              .get<Service[]>("/assets/data/talent-track.json")
               .pipe(
                 map((x) => x.find((service) => service.name === params.service))
               );

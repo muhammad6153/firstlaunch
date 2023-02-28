@@ -21,7 +21,7 @@ import { AppComponent } from "@/app/app.component";
 import { LandingLayoutComponent } from "@layouts/landing-layout/landing-layout.component";
 import { NavbarComponent } from "@components/shared/navbar/navbar.component";
 import { FooterComponent } from "@components/shared/footer/footer.component";
-import { ServiceCardsComponent } from "@components/landing/service-cards/service-cards.component";
+import { ServiceCardsComponent } from "@components/landing/talent-track-cards/talent-track-cards.component";
 import { ServicesService } from "@/app/services/services.service";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";

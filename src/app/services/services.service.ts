@@ -24,7 +24,7 @@ export class ServicesService {
   public async fetchServices(): Promise<void> {
     if (!this.$services.value.length) {
       return this.httpClient
-        .get<Service[]>("/assets/data/services.json")
+        .get<Service[]>("/assets/data/talent-track.json")
         .pipe(
           map((services) => {
             this.$services.next(services);
@@ -35,7 +35,7 @@ export class ServicesService {
   }
 
   public fetchService(name: string): Observable<Nullish<Service>> {
-    return this.httpClient.get<Service[]>("/assets/data/services.json").pipe(
+    return this.httpClient.get<Service[]>("/assets/data/talent-track.json").pipe(
       map((services) => {
         if (Array.isArray(services)) {
           return services.find((service) => service.name === name) ?? null;

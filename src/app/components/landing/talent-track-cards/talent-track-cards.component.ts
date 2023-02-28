@@ -4,9 +4,9 @@ import { ServicesService } from "@/app/services/services.service";
 import type { Subscription } from "rxjs";
 
 @Component({
-  selector: "app-service-cards",
-  templateUrl: "./service-cards.component.html",
-  styleUrls: ["./service-cards.component.scss"],
+  selector: "app-talent-track-cards",
+  templateUrl: "./talent-track-cards.component.html",
+  styleUrls: ["./talent-track-cards.component.scss"],
 })
 export class ServiceCardsComponent implements OnInit, OnDestroy {
   @Input()
