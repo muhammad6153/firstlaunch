@@ -1,0 +1,227 @@
+<div class="d-flex flex-wrap align-items-stretch container my-5">
+  <div class="col-12 col-md-6 col-lg-3 my-5 p-2">
+    <div
+      id="basic"
+      class="pricing-card rounded p-3 text-center"
+      [class]="{
+        active: activePlan === 'basic',
+        'mat-app-background-dark': activePlan === 'basic'
+      }"
+      (click)="activePlan = 'basic'"
+    >
+      <h1 class="mat-display-1 text-primary my-4">BASIC</h1>
+      <h3>One Tool Service</h3>
+      <p>
+        <strong>4880</strong>
+        /
+        <small>SAR</small>
+      </p>
+      <hr class="my-3" />
+      <div>
+        <p>Professional Audio Recording (3-5 Minute Audio)</p>
+        <p>Or 3 Hours Shoot for Short Video (1 to 2 Minute Video)</p>
+        <p>+ Professional Photographic</p>
+        <p>HD Camera</p>
+        <p>Professional Audio</p>
+        <p>Voiceover</p>
+        <p>Motion Graphics</p>
+        <p>Storyboards</p>
+        <p>2D Animation</p>
+        <p>Audio Effects</p>
+        <p>Licensed Music</p>
+        <p>Multiple Rounds of Revisions</p>
+        <div class="text-muted">
+          <p>Location Rental</p>
+          <p>Actor and Actresses</p>
+          <p>Professional Director on Shoot</p>
+          <p>High-End Cinematographer</p>
+          <p>Expanded Filming Crew</p>
+          <p>Music Clearances / Custom Music</p>
+          <p>Stock Shots (Video or Photos)</p>
+          <p>Licensed Stock Music & Video</p>
+          <p>Professional Videographer</p>
+          <p>Text & Graphics</p>
+          <p>2 rounds (Editing & Revisions)</p>
+          <p>Up to (5) Stock Shots (Video or Photos) Included</p>
+        </div>
+      </div>
+      <a
+        mat-raised-button
+        color="primary"
+        [routerLink]="routerLink('basic')"
+        [queryParams]="queryParams('basic')"
+        class="my-4"
+      >
+        Choose Plan
+      </a>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-lg-3 my-5 p-2">
+    <div
+      id="express"
+      class="pricing-card rounded p-3 text-center"
+      [class]="{
+        active: activePlan === 'express',
+        'mat-app-background-dark': activePlan === 'express'
+      }"
+      (click)="activePlan = 'express'"
+    >
+      <h1 class="mat-display-1 text-primary my-4">EXPRESS</h1>
+      <h3>Two Tools Service</h3>
+      <p>
+        <strong>9880</strong>
+        /
+        <small>SAR</small>
+      </p>
+      <hr class="my-3" />
+      <div>
+        <p>Short Professional Video</p>
+        <p>+ Half Day Shoot for one Video (3 to 5 Minutes Video)</p>
+        <p>Professional Photographic</p>
+        <p>HD Camera</p>
+        <p>Additional Professional Audio</p>
+        <p>Licensed Stock Music & Video</p>
+        <p>Professional Videographer</p>
+        <p>Text & Graphics</p>
+        <p>Limited Editing & Revisions</p>
+        <p>Stock Shots (Video or Photos)</p>
+        <p>Voiceover (as needed)</p>
+        <div class="text-muted">
+          <p>Location Rental</p>
+          <p>Actor and Actresses</p>
+          <p>Professional Director on Shoot</p>
+          <p>High-End Cinematographer</p>
+          <p>Expanded Filming Crew</p>
+          <p>Music Clearances / Custom Music</p>
+          <p>Stock Shots (Video or Photos)</p>
+          <p>Motion Graphics</p>
+          <p>Storyboards</p>
+          <p>2D Animation</p>
+          <p>Audio Effects</p>
+          <p>Licensed Music</p>
+          <p>Multiple Rounds of Revisions</p>
+        </div>
+      </div>
+      <a
+        mat-raised-button
+        color="primary"
+        [routerLink]="routerLink('express')"
+        [queryParams]="queryParams('express')"
+        class="my-4"
+      >
+        Choose Plan
+      </a>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-lg-3 my-5 p-2">
+    <div
+      id="super"
+      class="pricing-card rounded p-3 text-center"
+      [class]="{
+        active: activePlan === 'super',
+        'mat-app-background-dark': activePlan === 'super'
+      }"
+      (click)="activePlan = 'super'"
+    >
+      <h1 class="mat-display-1 text-primary my-4">SUPER</h1>
+      <h3>Two Tools Service</h3>
+      <p>
+        <strong>14880</strong>
+        /
+        <small>SAR</small>
+      </p>
+      <hr class="my-3" />
+      <div>
+        <p>Long Professional Video</p>
+        <p>Full Day Shoot</p>
+        <p>Professional Photographic</p>
+        <p>HD Camera</p>
+        <p>Additional Professional Audio</p>
+        <p>Licensed Stock Music & Video</p>
+        <p>Professional Videographer</p>
+        <p>Text & Graphics</p>
+        <p>Stock Shots(Video or Photos)</p>
+        <p>Unlimited Editing & Revisions</p>
+        <p>Voice Over Talent</p>
+        <p>Motion Graphics Templates</p>
+        <p>Storyboards</p>
+        <p>2D Animations</p>
+        <p>Audio Effects</p>
+        <p>Licensed Music</p>
+        <p>Multiple Rounds of Revisions</p>
+        <div class="text-muted">
+          <p>Location Rental</p>
+          <p>Actor and Actresses</p>
+          <p>Professional Director on Shoot</p>
+          <p>High-End Cinematographer</p>
+          <p>Expanded Filming Crew</p>
+          <p>Music Clearances / Custom Music</p>
+          <p>Stock Shots (Video or Photos)</p>
+        </div>
+      </div>
+      <a
+        mat-raised-button
+        color="primary"
+        [routerLink]="routerLink('super')"
+        [queryParams]="queryParams('super')"
+        class="my-4"
+      >
+        Choose Plan
+      </a>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-lg-3 my-5 p-2">
+    <div
+      id="premium"
+      class="pricing-card rounded p-3 text-center"
+      [class]="{
+        active: activePlan === 'premium',
+        'mat-app-background-dark': activePlan === 'premium'
+      }"
+      (click)="activePlan = 'premium'"
+    >
+      <h1 class="mat-display-1 text-primary my-4">PREMIUM</h1>
+      <h3>Professional Service (Custom)</h3>
+      <p>
+        <strong>19980</strong>
+        /
+        <small>SAR</small>
+      </p>
+      <hr class="my-3" />
+      <p>Professional Video</p>
+      <p>Casting + Script Writing</p>
+      <p>+ Professional Photographic</p>
+      <p>HD & 4K Camera</p>
+      <p>Location Rental</p>
+      <p>Actor and Actresses</p>
+      <p>Professional Director on Shoot</p>
+      <p>High-End Cinematographer</p>
+      <p>Expanded Filming Crew</p>
+      <p>Music Clearances / Custom Music</p>
+      <p>Stock Shots (Video or Photos)</p>
+      <p>Additional Professional Audio</p>
+      <p>Licensed Stock Music & Video</p>
+      <p>Professional Videographer</p>
+      <p>Text & Graphics</p>
+      <p>Unlimited Editing & Revisions</p>
+      <p>Stock shots (Video or Photos)</p>
+      <p>Voiceover Talent</p>
+      <p>Custom Motion Graphics</p>
+      <p>Art Direction / Illustration</p>
+      <p>Story boards</p>
+      <p>2D Animation</p>
+      <p>Audio Effects</p>
+      <p>Licensed Music</p>
+      <p>Multiple Rounds of Revisions</p>
+      <a
+        mat-raised-button
+        color="primary"
+        [routerLink]="routerLink('premium')"
+        [queryParams]="queryParams('premium')"
+        class="my-4"
+      >
+        Choose Plan
+      </a>
+    </div>
+  </div>
+</div>

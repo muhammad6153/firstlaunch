@@ -1,0 +1,803 @@
+<div class="d-flex flex-wrap container justify-content-center my-5">
+  <div
+    class="col-12 col-md-8 col-lg-6 my-4 p-4 mat-app-background-dark mat-elevation-z6 rounded"
+  >
+    <h1 class="text-center">{{ "SERVICE_ORDER_PAGE.TITLE" | translate }}</h1>
+
+    <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+      <!-- Personal Information -->
+      <div>{{ "SERVICE_ORDER_PAGE.PERSONAL_INFORMATION" | translate }}</div>
+      <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.NAME" | translate }}</mat-label>
+            <input matInput required formControlName="name" />
+            <mat-error
+              *ngIf="
+                form.get('name')?.invalid &&
+                (form.get('name')?.dirty || form.get('name')?.touched) &&
+                form.get('name')?.errors?.required
+              "
+            >
+              Name is required.
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('name')?.invalid &&
+                (form.get('name')?.dirty || form.get('name')?.touched) &&
+                form.get('name')?.errors?.minlength
+              "
+            >
+              Name must be at least 2 characters long.
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('name')?.invalid &&
+                (form.get('name')?.dirty || form.get('name')?.touched) &&
+                form.get('name')?.errors?.maxlength
+              "
+            >
+              Name must be 32 characters long maximum.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.DATE_OF_BIRTH" | translate }}</mat-label>
+            <input
+              matInput
+              required
+              [min]="minDataOfBirth"
+              [max]="maxDataOfBirth"
+              [matDatepicker]="picker"
+              formControlName="dateOfBirth"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error
+              *ngIf="
+                form.get('dateOfBirth')?.invalid &&
+                (form.get('dateOfBirth')?.dirty ||
+                  form.get('dateOfBirth')?.touched) &&
+                form.get('dateOfBirth')?.errors?.required
+              "
+            >
+              Date of Birth is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.AGE" | translate }}</mat-label>
+            <mat-select required formControlName="age">
+              <mat-option *ngFor="let age of allowedAges()" [value]="age">
+                {{ age }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="
+                form.get('age')?.invalid &&
+                (form.get('age')?.dirty || form.get('age')?.touched) &&
+                form.get('age')?.errors?.required
+              "
+            >
+              Age is required.
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('age')?.invalid &&
+                (form.get('age')?.dirty || form.get('age')?.touched) &&
+                form.get('age')?.errors?.min
+              "
+            >
+              You must be 18+!
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('age')?.invalid &&
+                (form.get('age')?.dirty || form.get('age')?.touched) &&
+                form.get('age')?.errors?.max
+              "
+            >
+              You must be under 60 years old!
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.PHONE_NUMBER" | translate }}</mat-label>
+            <input matInput required formControlName="phoneNumber" />
+            <mat-error
+              *ngIf="
+                form.get('phoneNumber')?.invalid &&
+                (form.get('phoneNumber')?.dirty ||
+                  form.get('phoneNumber')?.touched) &&
+                form.get('phoneNumber')?.errors?.required
+              "
+            >
+              Phone number is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.NATIONALITY" | translate }}</mat-label>
+            <mat-select required formControlName="nationality">
+              <mat-option *ngFor="let country of countries" [value]="country">
+                {{ country }}
+              </mat-option>
+            </mat-select>
+            <mat-spinner
+              matSuffix
+              *ngIf="!countries.length"
+              [diameter]="22"
+            ></mat-spinner>
+            <mat-error
+              *ngIf="
+                form.get('nationality')?.invalid &&
+                (form.get('nationality')?.dirty ||
+                  form.get('nationality')?.touched) &&
+                form.get('nationality')?.errors?.required
+              "
+            >
+              Nationality is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.EMAIL" | translate }}</mat-label>
+            <input matInput required formControlName="email" />
+            <mat-error
+              *ngIf="
+                form.get('email')?.invalid &&
+                (form.get('email')?.dirty || form.get('email')?.touched) &&
+                form.get('email')?.errors?.required
+              "
+            >
+              Email is required.
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('email')?.invalid &&
+                (form.get('email')?.dirty || form.get('email')?.touched) &&
+                form.get('email')?.errors?.email
+              "
+            >
+              Email is invalid.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.ADDRESS" | translate }}</mat-label>
+            <input matInput required formControlName="address" />
+            <mat-error
+              *ngIf="
+                form.get('address')?.invalid &&
+                (form.get('address')?.dirty || form.get('address')?.touched) &&
+                form.get('address')?.errors?.required
+              "
+            >
+              Address is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.CITY_ZIP_CODE" | translate }}</mat-label>
+            <input matInput required formControlName="cityOrZipcode" />
+            <mat-error
+              *ngIf="
+                form.get('cityOrZipcode')?.invalid &&
+                (form.get('cityOrZipcode')?.dirty ||
+                  form.get('cityOrZipcode')?.touched) &&
+                form.get('cityOrZipcode')?.errors?.required
+              "
+            >
+              City or Zipcode is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Background -->
+      <div>{{ "SERVICE_ORDER_PAGE.BACKGROUND" | translate }}</div>
+      <div class="d-flex flex-wrap">
+        <div class="col-12 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.BACKGROUND" | translate }}</mat-label>
+            <textarea
+              matInput
+              rows="5"
+              required
+              formControlName="background"
+            ></textarea>
+            <mat-error
+              *ngIf="
+                form.get('background')?.invalid &&
+                (form.get('background')?.dirty ||
+                  form.get('background')?.touched) &&
+                form.get('background')?.errors?.required
+              "
+            >
+              Background is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Social Media Accounts -->
+      <div class="d-flex w-100">
+        <div>{{ "SERVICE_ORDER_PAGE.SOCIAL_MEDIA_ACCOUNTS" | translate }}</div>
+        <span class="small text-muted mx-1">
+          {{ "SERVICE_ORDER_PAGE.OPTIONAL" | translate }}
+        </span>
+      </div>
+      <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "SOCIAL_MEDIA.TWITTER" | translate }}</mat-label>
+            <input matInput formControlName="twitter" />
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "SOCIAL_MEDIA.YOUTUBE" | translate }}</mat-label>
+            <input matInput formControlName="youtube" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "SOCIAL_MEDIA.INSTAGRAM" | translate }}</mat-label>
+            <input matInput formControlName="instagram" />
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "SOCIAL_MEDIA.TIKTOK" | translate }}</mat-label>
+            <input matInput formControlName="tiktok" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap">
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "SOCIAL_MEDIA.SNAPCHAT" | translate }}</mat-label>
+            <input matInput formControlName="snapchat" />
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "SOCIAL_MEDIA.FACEBOOK" | translate }}</mat-label>
+            <input matInput formControlName="facebook" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Experience & Trials -->
+      <div class="d-flex w-100">
+        <div>{{ "SERVICE_ORDER_PAGE.EXPERIENCE_AND_TRIALS" | translate }}</div>
+        <span class="small text-muted mx-1">
+          {{ "SERVICE_ORDER_PAGE.OPTIONAL" | translate }}
+        </span>
+      </div>
+      <div class="d-flex flex-wrap">
+        <div class="col-12 p-2">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>
+              {{ "FORM_LABELS.EXPERIENCE_AND_TRIALS" | translate }}
+            </mat-label>
+            <textarea
+              matInput
+              rows="5"
+              formControlName="experienceAndTrials"
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Resume -->
+      <div class="d-flex w-100">
+        <div>{{ "SERVICE_ORDER_PAGE.RESUME" | translate }}</div>
+        <span class="small text-muted mx-1">
+          {{ "SERVICE_ORDER_PAGE.OPTIONAL" | translate }}
+        </span>
+      </div>
+      <div class="d-flex flex-wrap">
+        <div class="col-12 p-2">
+          <mat-form-field
+            appearance="outline"
+            class="w-100 file-form-field"
+            (click)="resumeFileInput.click()"
+          >
+            <mat-label class="ms-1 file-form-field">
+              {{ "SERVICE_ORDER_PAGE.UPLOAD_RESUME" | translate }}
+            </mat-label>
+            <mat-icon matPrefix>cloud_upload</mat-icon>
+            <input
+              matInput
+              readonly
+              class="file-form-field"
+              [value]="resumeFileInput.value"
+            />
+            <input
+              #resumeFileInput
+              type="file"
+              accept="application/msword,application/pdf"
+              class="d-none"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Professional Picture -->
+      <div class="d-flex w-100">
+        <div>{{ "SERVICE_ORDER_PAGE.PROFESSIONAL_PICTURE" | translate }}</div>
+        <span class="small text-muted mx-1">
+          {{ "SERVICE_ORDER_PAGE.OPTIONAL" | translate }}
+        </span>
+      </div>
+      <div class="d-flex flex-wrap">
+        <div class="col-12 p-2">
+          <mat-form-field
+            appearance="outline"
+            class="w-100 file-form-field"
+            (click)="pictureFileInput.click()"
+          >
+            <mat-label class="ms-1 file-form-field">
+              {{ "SERVICE_ORDER_PAGE.UPLOAD_PICTURE" | translate }}
+            </mat-label>
+            <mat-icon matPrefix>cloud_upload</mat-icon>
+            <input
+              matInput
+              readonly
+              class="file-form-field"
+              [value]="pictureFileInput.value"
+            />
+            <input
+              #pictureFileInput
+              type="file"
+              accept="image/jpeg,image/png"
+              class="d-none"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Interests & Category -->
+      <ng-container *ngIf="service === 'acting-talent'">
+        <div class="d-flex w-100">
+          <div>
+            {{ "SERVICE_ORDER_PAGE.INTERESTS_AND_CATEGORY" | translate }}
+          </div>
+          <span class="small text-muted mx-1">
+            {{ "SERVICE_ORDER_PAGE.CHECK_ALL_APPLIES" | translate }}
+          </span>
+        </div>
+        <div class="d-flex flex-wrap" formGroupName="interestsAndCategory">
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="filmAndTVActing">
+              {{ "SERVICE_ORDER_PAGE.FILM_AND_TV_ACTING" | translate }}
+            </mat-checkbox>
+          </div>
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="commercialsActing">
+              {{ "SERVICE_ORDER_PAGE.COMMERCIALS_ACTING" | translate }}
+            </mat-checkbox>
+          </div>
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="drama">
+              {{ "SERVICE_ORDER_PAGE.DRAMA" | translate }}
+            </mat-checkbox>
+          </div>
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="theatreActing">
+              {{ "SERVICE_ORDER_PAGE.THEATRE_ACTING" | translate }}
+            </mat-checkbox>
+          </div>
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="extraBackgroundActing">
+              {{ "SERVICE_ORDER_PAGE.EXTRA_BACKGROUND_ACTING" | translate }}
+            </mat-checkbox>
+          </div>
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="comedy">
+              {{ "SERVICE_ORDER_PAGE.COMEDY" | translate }}
+            </mat-checkbox>
+          </div>
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="voiceOverActing">
+              {{ "SERVICE_ORDER_PAGE.VOICE_OVER_ACTING" | translate }}
+            </mat-checkbox>
+          </div>
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="classic">
+              {{ "SERVICE_ORDER_PAGE.CLASSIC" | translate }}
+            </mat-checkbox>
+          </div>
+          <div class="col-6 col-md-4 p-2">
+            <mat-checkbox formControlName="others">
+              {{ "SERVICE_ORDER_PAGE.OTHERS" | translate }}
+            </mat-checkbox>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Your Interests & Field -->
+      <ng-container *ngIf="service === 'influencers'">
+        <div>
+          {{ "SERVICE_ORDER_PAGE.YOUR_INTERESTS_AND_FIELD" | translate }}
+        </div>
+        <div class="d-flex flex-wrap">
+          <div class="col-12 p-2">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>
+                {{ "FORM_LABELS.INTERESTS_AND_FIELD" | translate }}
+              </mat-label>
+              <textarea
+                matInput
+                rows="5"
+                formControlName="interestsAndField"
+              ></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Which instrument/s you play -->
+      <ng-container *ngIf="service === 'musical-talent'">
+        <div>{{ "FORM_LABELS.INSTRUMENTS_YOU_PLAY" | translate }}</div>
+        <div class="d-flex flex-wrap">
+          <div class="col-12 p-2">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>
+                {{ "FORM_LABELS.INSTRUMENTS_YOU_PLAY" | translate }}
+              </mat-label>
+              <textarea
+                matInput
+                rows="5"
+                formControlName="instrumentsPlayed"
+              ></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>{{ "FORM_LABELS.HOW_LONG_YOU_PLAY" | translate }}</div>
+        <div class="d-flex flex-wrap">
+          <div class="col-12 p-2">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>
+                {{ "FORM_LABELS.HOW_LONG_YOU_PLAY" | translate }}
+              </mat-label>
+              <textarea
+                matInput
+                rows="5"
+                formControlName="howLongInstrumentsPlayed"
+              ></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- My dimensions as follows -->
+      <ng-container *ngIf="service === 'professional-models'">
+        <div formGroupName="dimensions">
+          <div>
+            {{ "SERVICE_ORDER_PAGE.MY_DIMENSIONS_AS_FOLLOWS" | translate }}
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.GENDER" | translate }}</mat-label>
+                <mat-select required formControlName="gender">
+                  <mat-option value="male">
+                    {{ "FORM_LABELS.MALE" | translate }}
+                  </mat-option>
+                  <mat-option value="female">
+                    {{ "FORM_LABELS.FEMALE" | translate }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.HEIGHT" | translate }}</mat-label>
+                <input matInput required formControlName="height" />
+              </mat-form-field>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.WEIGHT" | translate }}</mat-label>
+                <input matInput required formControlName="weight" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.BUST_CHEST" | translate }}
+                </mat-label>
+                <input matInput formControlName="bustChest" />
+              </mat-form-field>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.WAIST" | translate }}</mat-label>
+                <input matInput formControlName="waist" />
+              </mat-form-field>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.INSEAM_OUTSEAM" | translate }}
+                </mat-label>
+                <input matInput formControlName="inseamOutseam" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.DRESS_SUIT_SIZE" | translate }}
+                </mat-label>
+                <input matInput formControlName="dressOrSuitSize" />
+              </mat-form-field>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.PANTS_SIZE" | translate }}
+                </mat-label>
+                <input matInput formControlName="pantsSize" />
+              </mat-form-field>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.SHOE_SIZE" | translate }}</mat-label>
+                <input matInput formControlName="shoeSize" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="service === 'voice-talent'">
+        <div formGroupName="voiceClassification">
+          <div class="d-flex w-100">
+            <div>
+              {{ "SERVICE_ORDER_PAGE.VOICE_CLASSIFICATION" | translate }}
+            </div>
+            <span class="small text-muted mx-1">
+              {{ "SERVICE_ORDER_PAGE.IF_KNOWN" | translate }}
+            </span>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <span>{{ "SERVICE_ORDER_PAGE.RANGE" | translate }}</span>
+              <mat-slider
+                thumbLabel
+                class="ms-2"
+                [max]="5"
+                [min]="0"
+                [tickInterval]="1"
+                formControlName="range"
+              ></mat-slider>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <span>{{ "SERVICE_ORDER_PAGE.TONE_QUALITY" | translate }}</span>
+              <mat-slider
+                thumbLabel
+                class="ms-2"
+                [max]="5"
+                [min]="0"
+                [tickInterval]="1"
+                formControlName="toneQuality"
+              ></mat-slider>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <span>{{ "SERVICE_ORDER_PAGE.INTONATION" | translate }}</span>
+              <mat-slider
+                thumbLabel
+                class="ms-2"
+                [max]="5"
+                [min]="0"
+                [tickInterval]="1"
+                formControlName="intonation"
+              ></mat-slider>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <span>{{ "SERVICE_ORDER_PAGE.SIGHT_SINGING" | translate }}</span>
+              <mat-slider
+                thumbLabel
+                class="ms-2"
+                [max]="5"
+                [min]="0"
+                [tickInterval]="1"
+                formControlName="sightSinging"
+              ></mat-slider>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <span>
+                {{ "SERVICE_ORDER_PAGE.MELODY_MEMORIZATION" | translate }}
+              </span>
+              <mat-slider
+                thumbLabel
+                class="ms-2"
+                [max]="5"
+                [min]="0"
+                [tickInterval]="1"
+                formControlName="melodyMemorization"
+              ></mat-slider>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <span>{{ "SERVICE_ORDER_PAGE.CONFIDENCE" | translate }}</span>
+              <mat-slider
+                thumbLabel
+                class="ms-2"
+                [max]="5"
+                [min]="0"
+                [tickInterval]="1"
+                formControlName="confidence"
+              ></mat-slider>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <span>{{ "SERVICE_ORDER_PAGE.OVERALL_RATING" | translate }}</span>
+              <mat-slider
+                thumbLabel
+                class="ms-2"
+                [max]="5"
+                [min]="0"
+                [tickInterval]="1"
+                formControlName="overallRating"
+              ></mat-slider>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- Writing interests & category -->
+      <ng-container *ngIf="service === 'writing-talent'">
+        <div formGroupName="writingInterestsAndCategory">
+          <div>
+            <span>
+              {{
+                "SERVICE_ORDER_PAGE.WRITING_INTERESTS_AND_CATEGORY" | translate
+              }}
+            </span>
+            <span class="small text-muted">
+              {{ "SERVICE_ORDER_PAGE.CHECK_ALL_APPLIES" | translate }}
+            </span>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="poetry">
+                {{ "SERVICE_ORDER_PAGE.POETRY" | translate }}
+              </mat-checkbox>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="drama">
+                {{ "SERVICE_ORDER_PAGE.DRAMA" | translate }}
+              </mat-checkbox>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="scienceFiction">
+                {{ "SERVICE_ORDER_PAGE.SCIENCE_FICTION" | translate }}
+              </mat-checkbox>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="songLyrics">
+                {{ "SERVICE_ORDER_PAGE.SONG_LYRICS" | translate }}
+              </mat-checkbox>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="mystery">
+                {{ "SERVICE_ORDER_PAGE.MYSTERY" | translate }}
+              </mat-checkbox>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="nonfiction">
+                {{ "SERVICE_ORDER_PAGE.NONFICTION" | translate }}
+              </mat-checkbox>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="fantasy">
+                {{ "SERVICE_ORDER_PAGE.FANTASY" | translate }}
+              </mat-checkbox>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="biography">
+                {{ "SERVICE_ORDER_PAGE.BIOGRAPHY" | translate }}
+              </mat-checkbox>
+            </div>
+            <div class="col-6 col-md-4 p-2">
+              <mat-checkbox formControlName="fiction">
+                {{ "SERVICE_ORDER_PAGE.FICTION" | translate }}
+              </mat-checkbox>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="d-flex flex-wrap">
+        <div class="col-12 p-2">
+          <div class="text-warning my-2 small">
+            {{
+              "SERVICE_ORDER_PAGE.PRIVACY_POLICY_AGREEMENT_MESSAGE" | translate
+            }}
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap">
+        <div class="col-12 p-2">
+          <div class="my-3 small">
+            <mat-checkbox
+              class="me-1 mb-1"
+              (change)="privacyPolicyAccepted = $event.checked"
+            ></mat-checkbox>
+            <span>
+              {{ "SERVICE_ORDER_PAGE.PRIVACY_POLICY_AGREEMENT" | translate }}
+            </span>
+            <mat-error
+              *ngIf="!privacyPolicyAccepted && !form.disabled && form.valid"
+            >
+              You must accept the privacy policy.
+            </mat-error>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-3 text-center">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="w-100 py-1"
+          [disabled]="form.disabled || form.invalid"
+        >
+          <mat-spinner
+            color="warn"
+            class="d-inline-block"
+            [diameter]="24"
+            *ngIf="form.disabled"
+          ></mat-spinner>
+          <span class="mx-2">
+            {{ "SERVICE_ORDER_PAGE.SUBMIT_BUTTON" | translate }}
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

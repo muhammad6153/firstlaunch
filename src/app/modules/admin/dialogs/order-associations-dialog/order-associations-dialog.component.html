@@ -1,0 +1,57 @@
+<div>
+  <h1>Assign user(s) to order</h1>
+  <mat-divider class="mb-3"></mat-divider>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Select/Assign users</mat-label>
+    <mat-chip-list #chipList aria-label="Users selection">
+      <mat-chip
+        removable
+        selectable
+        *ngFor="let user of users"
+        (removed)="remove(user)"
+      >
+        <span>{{ user.name }}</span>
+        <span>&nbsp;</span>
+        <span class="small text-warning">({{ user.role | lowercase }})</span>
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        #usersInput
+        placeholder="Assigned users..."
+        [formControl]="usersControl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+        <span>{{ user.name }}</span>
+        <span>&nbsp;</span>
+        <span class="small text-muted">({{ user.role | lowercase }})</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    type="submit"
+    color="primary"
+    class="w-100 py-1"
+    [disabled]="loading"
+    (click)="handleSubmit()"
+  >
+    <mat-spinner
+      color="warn"
+      class="d-inline-block"
+      [diameter]="24"
+      *ngIf="loading"
+    ></mat-spinner>
+    <span class="mx-2">
+      {{ "FORM_LABELS.SUBMIT" | translate }}
+    </span>
+  </button>
+</div>

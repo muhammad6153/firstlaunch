@@ -1,0 +1,195 @@
+<mat-toolbar
+  class="navbar navbar-expand-lg sticky-top py-3 h-auto"
+  [class.mat-elevation-z11]="navbarHasBackground"
+>
+  <div class="container">
+    <button
+      mat-icon-button
+      class="navbar-toggler"
+      (click)="navbarMenuVisible = !navbarMenuVisible"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a mat-button routerLink="/" class="navbar-brand">
+      <app-brand-logo></app-brand-logo>
+    </a>
+    <div
+      class="collapse navbar-collapse my-4 my-lg-0"
+      [class.show]="navbarMenuVisible"
+    >
+      <div class="navbar-nav mx-auto">
+        <a
+          routerLink="/"
+          routerLinkActive="mat-primary"
+          class="nav-link my-2 my-lg-0"
+          mat-button
+          (click)="navbarMenuVisible = false"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          {{ "NAVBAR.LINKS.CONTACT_US" | translate }}
+        </a>
+        <a (click)="scroll('service')" class="mat-focus-indicator nav-link my-2 my-lg-0 mat-button mat-button-base">
+          {{ "NAVBAR.LINKS.SERVICES" | translate }}
+        </a>
+        <a (click)="scroll('about-us')" class="mat-focus-indicator nav-link my-2 my-lg-0 mat-button mat-button-base">
+          {{ "NAVBAR.LINKS.ABOUT_US" | translate }}
+        </a>
+        <!-- <a
+          routerLink="/pricing/general"
+          routerLinkActive="mat-primary"
+          class="nav-link my-2 my-lg-0"
+          mat-button
+          (click)="navbarMenuVisible = false"
+        >
+          {{ "NAVBAR.LINKS.PRICING" | translate }}
+        </a> -->
+        <!-- <a
+          routerLink="/portfolio"
+          routerLinkActive="mat-primary"
+          class="nav-link my-2 my-lg-0"
+          mat-button
+          (click)="navbarMenuVisible = false"
+        >
+          {{ "NAVBAR.LINKS.PORTFOLIO" | translate }}
+        </a> -->
+        <!-- <a
+          routerLink="/team"
+          routerLinkActive="mat-primary"
+          class="nav-link my-2 my-lg-0"
+          mat-button
+          (click)="navbarMenuVisible = false"
+        > -->
+
+        <a (click)="scroll('talent-track')" class="mat-focus-indicator nav-link my-2 my-lg-0 mat-button mat-button-base">
+          {{ "TALENT_SECTION.TITLE" | translate }}
+        </a>
+        <a (click)="scroll('team')"
+          class="mat-focus-indicator nav-link my-2 my-lg-0 mat-button mat-button-base">
+          {{ "TEAM_SECTION.TITLE" | translate }}
+        </a>
+        <!-- <a routerLink="/services" routerLinkActive="mat-primary" class="nav-link my-2 my-lg-0" mat-button
+          (click)="navbarMenuVisible = false">
+          {{ "NAVBAR.LINKS.SERVICES" | translate }}
+        </a> -->
+
+
+        <!-- <a
+          routerLink="/contact"
+          routerLinkActive="mat-primary"
+          class="nav-link my-2 my-lg-0"
+          mat-button
+          (click)="navbarMenuVisible = false"
+        >
+          {{ "NAVBAR.LINKS.CONTACT_US" | translate }}
+        </a> -->
+      </div>
+      <ng-container *ngIf="user; else authLinks">
+        <div class="navbar-nav">
+          <button mat-button [matMenuTriggerFor]="userMenu">
+            <span>{{ user?.name }}</span>
+            <mat-icon>expand_more</mat-icon>
+          </button>
+        </div>
+        <mat-menu #userMenu="matMenu">
+          <ng-container>
+            <a mat-menu-item routerLink="/user" *ngIf="!!user">
+              <mat-icon>person_outline</mat-icon>
+              {{ "NAVBAR.USER_MENU.USER_AREA" | translate }}
+            </a>
+            <a mat-menu-item routerLink="/admin" *ngIf="isAdmin()">
+              <mat-icon>dashboard</mat-icon>
+              {{ "NAVBAR.USER_MENU.DASHBOARD" | translate }}
+            </a>
+            <a mat-menu-item routerLink="/partner" *ngIf="isPartner()">
+              <mat-icon>dashboard</mat-icon>
+              {{ "NAVBAR.USER_MENU.PARTNER" | translate }}
+            </a>
+            <a
+              mat-menu-item
+              routerLink="/collaborator"
+              *ngIf="isCollaborator()"
+            >
+              <mat-icon>dashboard</mat-icon>
+              {{ "NAVBAR.USER_MENU.COLLABORATOR" | translate }}
+            </a>
+            <a mat-menu-item routerLink="/coordinator" *ngIf="isCoordinator()">
+              <mat-icon>dashboard</mat-icon>
+              {{ "NAVBAR.USER_MENU.COORDINATOR" | translate }}
+            </a>
+            <button mat-menu-item (click)="matThemeService.toggleDarkMode()">
+              <mat-icon>
+                {{ matThemeService.isDarkModeEnabled ? "wb_sunny" : "bedtime" }}
+              </mat-icon>
+              <span>
+                {{
+                  (matThemeService.isDarkModeEnabled
+                    ? "WORDS.SWITCH_TO_LIGHT_MODE"
+                    : "WORDS.SWITCH_TO_DARK_MODE"
+                  ) | translate
+                }}
+              </span>
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="langMenu">
+              <mat-icon>translate</mat-icon>
+              {{ "NAVBAR.USER_MENU.LANGUAGE" | translate }}
+            </button>
+            <button mat-menu-item (click)="handleSignOut()">
+              <mat-icon>power_settings_new</mat-icon>
+              {{ "NAVBAR.USER_MENU.SIGN_OUT" | translate }}
+            </button>
+          </ng-container>
+        </mat-menu>
+        <mat-menu #langMenu="matMenu">
+          <ng-container>
+            <button mat-menu-item (click)="setLanguage('ar')">
+              <mat-icon svgIcon="arabic"></mat-icon>
+              <span>العربية</span>
+            </button>
+            <button mat-menu-item (click)="setLanguage('en')">
+              <mat-icon svgIcon="english"></mat-icon>
+              <span>English</span>
+            </button>
+          </ng-container>
+        </mat-menu>
+      </ng-container>
+      <ng-template #authLinks>
+        <div class="navbar-nav">
+          <button
+            mat-button
+            class="nav-link my-2 my-lg-0 mx-2"
+            [matMenuTriggerFor]="langMenu"
+          >
+            <mat-icon>translate</mat-icon>
+          </button>
+          <mat-menu #langMenu="matMenu">
+            <ng-container>
+              <button mat-menu-item (click)="setLanguage('ar')">
+                <mat-icon svgIcon="arabic"></mat-icon>
+                <span>العربية</span>
+              </button>
+              <button mat-menu-item (click)="setLanguage('en')">
+                <mat-icon svgIcon="english"></mat-icon>
+                <span>English</span>
+              </button>
+            </ng-container>
+          </mat-menu>
+          <a
+            mat-stroked-button
+            routerLink="/auth/login"
+            class="nav-link my-2 my-lg-0 mx-2"
+          >
+            {{ "NAVBAR.LINKS.LOGIN" | translate }}
+          </a>
+          <a
+            mat-flat-button
+            routerLink="/auth/signup"
+            class="nav-link my-2 my-lg-0"
+            color="primary"
+          >
+            {{ "NAVBAR.LINKS.SIGN_UP" | translate }}
+          </a>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</mat-toolbar>

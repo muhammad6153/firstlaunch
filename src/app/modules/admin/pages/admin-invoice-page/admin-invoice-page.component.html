@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <h1 class="my-0">Invoice #{{ invoice?.publicId }}</h1>
+        </div>
+        <div>
+          <div class="d-inline-block mx-2">
+            <span>State:&nbsp;</span>
+            <span
+              class="fw-bold"
+              [ngClass]="invoice?.isPaid ? 'text-success' : 'text-warning'"
+            >
+              {{ invoice?.isPaid ? "Paid" : "Unpaid" }}
+            </span>
+          </div>
+          <button
+            mat-button
+            matTooltip="Mark this invoice as paid"
+            [disabled]="loading"
+            (click)="switchInvoiceState()"
+          >
+            Mark as {{ invoice?.isPaid ? "unpaid" : "paid" }}
+          </button>
+          <button
+            mat-icon-button
+            matTooltip="Download invoice as PDF"
+            [disabled]="loading"
+            (click)="downloadInvoice()"
+          >
+            <mat-icon>get_app</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            matTooltip="Reload page data"
+            [disabled]="loading"
+            (click)="fetchData()"
+          >
+            <mat-icon [class.spinner]="loading">sync</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="col-12 my-2">
+      <mat-card>
+        <mat-card-content>
+          <div class="d-flex flex-column w-100">
+            <div class="col-12">
+              <div
+                class="d-flex justify-content-between align-items-end w-100 px-5"
+              >
+                <div>
+                  <p style="margin-left: -1rem">
+                    <app-brand-logo></app-brand-logo>
+                  </p>
+                  <p>info@firstlaunch.com.sa</p>
+                </div>
+                <div>
+                  <p>
+                    <span>Invoice</span>
+                    <span class="fw-bold mx-2">#{{ invoice?.publicId }}</span>
+                  </p>
+                  <p>
+                    <span>Date</span>
+                    <span class="fw-bold mx-2">
+                      {{ invoice?.creationDate | date }}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 my-2">
+              <table mat-table [dataSource]="dataSource" class="w-100">
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef>Description</th>
+                  <td mat-cell *matCellDef="let inv">
+                    {{ inv.description }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                  <th mat-header-cell *matHeaderCellDef>Price</th>
+                  <td mat-cell *matCellDef="let inv">
+                    {{ inv.amount }} {{ inv.currency }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="subtotal">
+                  <th mat-header-cell *matHeaderCellDef>Subtotal</th>
+                  <td mat-cell *matCellDef="let inv">
+                    {{ inv.amount }} {{ inv.currency }}
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"
+                ></tr>
+              </table>
+            </div>
+            <div class="col-12">
+              <div class="d-flex flex-column align-items-end w-100 px-5">
+                <div class="my-2">
+                  <span>Subtotal</span>
+                  <span class="fw-bold mx-2">
+                    {{ invoice?.amount }} {{ invoice?.currency }}
+                  </span>
+                </div>
+                <div class="my-2">
+                  <span>Tax</span>
+                  <span class="fw-bold mx-2">
+                    {{ taxAmount }} {{ invoice?.currency }}
+                  </span>
+                </div>
+                <div class="my-2">
+                  <span>Total</span>
+                  <span class="fw-bold mx-2">
+                    {{ (invoice?.amount || 0) + taxAmount }}
+                    {{ invoice?.currency }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

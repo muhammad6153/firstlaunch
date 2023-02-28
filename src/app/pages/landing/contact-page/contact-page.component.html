@@ -1,0 +1,133 @@
+<div
+  class="d-flex justify-content-center align-items-center flex-wrap container my-5 py-5"
+>
+  <div class="col-12 col-lg-6 my-3">
+    <img
+      src="assets/images/contact-page-img.jpg"
+      alt="First Launch"
+      class="d-block w-100 rounded mat-elevation-z24"
+    />
+  </div>
+  <div class="col-12 col-lg-6 my-3 px-lg-4">
+    <h1 class="d-inline-block mat-title border-bottom border-primary">
+      {{ "CONTACT_PAGE.TITLE" | translate }}
+    </h1>
+    <p class="text-justify">
+      {{ "CONTACT_PAGE.PARAGRAPH_0" | translate }}
+    </p>
+    <p class="text-justify">
+      {{ "CONTACT_PAGE.PARAGRAPH_1" | translate }}
+    </p>
+    <div class="d-flex w-100 my-5 align-items-center flex-wrap">
+      <div class="col-12">
+        <h1 class="my-0">{{ "GIVE_US_SHOUT_OUT" | translate }}</h1>
+      </div>
+      <button
+        mat-icon-button
+        class="m-2"
+        style="color: #25d366"
+        (click)="openShareLink('whatsapp')"
+        matTooltip="Share on WhatsApp"
+      >
+        <mat-icon svgIcon="whatsapp"></mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="m-2"
+        style="color: #3b5998"
+        (click)="openShareLink('facebook')"
+        matTooltip="Share on Facebook"
+      >
+        <mat-icon svgIcon="facebook"></mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="m-2"
+        style="color: #00acee"
+        (click)="openShareLink('twitter')"
+        matTooltip="Share on Twitter"
+      >
+        <mat-icon svgIcon="twitter"></mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="col-12 col-lg-7 my-5 py-5">
+    <div class="mat-app-background-dark shadow rounded p-5">
+      <h1 class="d-inline-block mat-title border-bottom border-primary mb-4">
+        {{ "CONTACT_PAGE.TITLE" | translate }}
+      </h1>
+      <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+        <p>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.EMAIL" | translate }}</mat-label>
+            <input matInput required formControlName="email" />
+            <mat-error *ngIf="email.invalid && email.errors?.required">
+              {{ "FORM_LABELS.EMAIL_REQUIRED" | translate }}
+            </mat-error>
+            <mat-error *ngIf="email.invalid && email.errors?.email">
+              {{ "FORM_LABELS.EMAIL_INVALID" | translate }}
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.NAME" | translate }}</mat-label>
+            <input matInput required formControlName="name" />
+            <mat-error *ngIf="name.invalid && name.errors?.required">
+              {{ "FORM_LABELS.NAME_REQUIRED" | translate }}
+            </mat-error>
+            <mat-error *ngIf="name.invalid && name.errors?.minlength">
+              {{ "FORM_LABELS.NAME_MIN_LENGTH" | translate }}
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>{{ "FORM_LABELS.MESSAGE" | translate }}</mat-label>
+            <textarea
+              matInput
+              rows="5"
+              required
+              formControlName="message"
+            ></textarea>
+            <mat-error *ngIf="message.invalid && message.errors?.required">
+              {{ "FORM_LABELS.MESSAGE_REQUIRED" | translate }}
+            </mat-error>
+            <mat-error *ngIf="message.invalid && message.errors?.minlength">
+              {{ "FORM_LABELS.MESSAGE_MIN_LENGTH" | translate }}
+            </mat-error>
+            <mat-error *ngIf="message.invalid && message.errors?.maxlength">
+              {{ "FORM_LABELS.MESSAGE_MAX_LENGTH" | translate }}
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary"
+          class="mt-2 w-100 py-1"
+          [disabled]="form.disabled || form.invalid"
+        >
+          <mat-spinner
+            color="warn"
+            class="d-inline-block"
+            [diameter]="24"
+            *ngIf="form.disabled"
+          ></mat-spinner>
+          <span class="mx-2">
+            {{ "FORM_LABELS.SUBMIT" | translate }}
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="col-12 my-5 py-5">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4414.281171230896!2d39.20140735354551!3d21.509552497179364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3cf1530e252e1%3A0xc80e2169d9f9e27d!2sMazaya%20Corporate!5e0!3m2!1sen!2seg!4v1605663780230!5m2!1sen!2seg"
+      width="100%"
+      height="500"
+      tabIndex="0"
+      class="rounded mat-elevation-z24"
+    ></iframe>
+  </div>
+</div>

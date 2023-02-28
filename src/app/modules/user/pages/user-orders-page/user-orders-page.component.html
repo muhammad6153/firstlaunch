@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <h1 class="my-0">Service Orders</h1>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <ng-container *ngIf="fetchingOrders; else loadingContainer">
+      <div class="col-12 my-2" *ngIf="fetchingOrders">
+        <div class="d-flex align-items-center py-4">
+          <mat-spinner color="primary" diameter="45"></mat-spinner>
+          <span class="mx-3">Loading orders...</span>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loadingContainer>
+      <div class="col-12 my-2" *ngIf="!orders.length">
+        <h1>You don't have any orders yet!</h1>
+      </div>
+    </ng-template>
+    <div class="col-12 my-2" *ngFor="let order of orders">
+      <mat-card>
+        <mat-card-content>
+          <h1>Order #{{ order.publicId }}</h1>
+          <h2 class="text-capitalize">{{ order?.plan }} Plan</h2>
+          <h2 class="text-capitalize">
+            {{ order?.service?.replace("-", " ") }} Service
+          </h2>
+          <a
+            mat-raised-button
+            [routerLink]="['/user/orders/track', order.id]"
+            color="primary"
+          >
+            Track
+          </a>
+          <a
+            mat-button
+            [routerLink]="['/user/orders', order.id]"
+            class="d-none"
+          >
+            Details
+          </a>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

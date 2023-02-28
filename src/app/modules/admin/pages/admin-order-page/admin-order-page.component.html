@@ -1,0 +1,751 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <h1 class="my-0">Order #{{ order?.publicId }}</h1>
+        </div>
+        <div>
+          <a
+            mat-raised-button
+            [routerLink]="['/admin/orders/track', order?.id]"
+            color="primary"
+            [disabled]="!order"
+          >
+            Track
+          </a>
+          <button
+            mat-icon-button
+            matTooltip="Reload page data"
+            (click)="fetchData()"
+            [disabled]="loading"
+          >
+            <mat-icon [class.spinner]="loading">sync</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="col-12">
+      <mat-card class="mb-4">
+        <mat-card-content>
+          <div class="d-flex flex-wrap my-2">
+            <div class="col-12 col-md-6">
+              <p>
+                ID:
+                <b>{{ order?.id }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Public ID:
+                <b>#{{ order?.publicId }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                User ID:
+                <b>{{ order?.userId }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Plan:
+                <b class="text-capitalize">{{ order?.plan }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Service:
+                <b class="text-capitalize">
+                  {{ order?.service?.replace("-", " ") }}
+                </b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Created At:
+                <b>{{ order?.creationDate | date }}</b>
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <ng-template [ngIf]="isAdmin">
+        <mat-card class="mb-4">
+          <mat-card-content>
+            <div class="d-flex flex-wrap my-2">
+              <div class="col-12 col-md-6">
+                <p>Associations:</p>
+              </div>
+              <div class="col-12">
+                <div class="mt-1 mb-4">
+                  <mat-chip-list>
+                    <mat-chip
+                      removable
+                      selectable
+                      *ngFor="let association of orderAssociations"
+                      (removed)="removeAssociation(association)"
+                    >
+                      <span>{{ association.name }}</span>
+                      <span>&nbsp;</span>
+                      <span class="small text-warning">
+                        ({{ association.role | lowercase }})
+                      </span>
+                      <mat-icon matChipRemove *ngIf="!loadingAssociations">
+                        cancel
+                      </mat-icon>
+                      <mat-spinner
+                        color="warn"
+                        class="d-inline-block mx-2"
+                        [diameter]="16"
+                        *ngIf="loadingAssociations"
+                      ></mat-spinner>
+                    </mat-chip>
+                  </mat-chip-list>
+                  <ng-template [ngIf]="!orderAssociations.length">
+                    <p class="text-warning">
+                      There are no associations on this order!
+                    </p>
+                  </ng-template>
+                </div>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="openOrderAssociationsDialog()"
+                  [disabled]="!order || loadingAssociations"
+                >
+                  <mat-icon>add</mat-icon>
+                  <span class="mx-1">Assign user to this order</span>
+                  <mat-spinner
+                    color="warn"
+                    class="d-inline-block"
+                    [diameter]="24"
+                    *ngIf="loadingAssociations"
+                  ></mat-spinner>
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <mat-card class="mb-4">
+        <mat-card-content>
+          <div class="d-flex flex-wrap my-2">
+            <div class="col-12 col-md-6">
+              <p>
+                Name:
+                <b>{{ order?.name }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Email:
+                <b>{{ order?.email }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Nationality:
+                <b>{{ order?.nationality || "Unknown" }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Phone Number:
+                <b>{{ order?.phoneNumber || "Unknown" }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Address:
+                <b>{{ order?.address || "Unknown" }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Age:
+                <b>{{ order?.age || "Unknown" }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                City or Zipcode:
+                <b>{{ order?.cityOrZipcode || "Unknown" }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Date of Birth:
+                <b>
+                  {{
+                    order?.dateOfBirth ? (order?.dateOfBirth | date) : "Unknown"
+                  }}
+                </b>
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="mb-4">
+        <mat-card-content>
+          <div class="d-flex flex-wrap my-2">
+            <div class="col-12 col-md-6">
+              <p>
+                Background:
+                <b>{{ order?.background }}</b>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Experience and Trials:
+                <b>{{ order?.experienceAndTrials || "Unknown" }}</b>
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="mb-4">
+        <mat-card-content>
+          <div class="d-flex flex-wrap my-2">
+            <div class="col-12 col-md-6">
+              <p>
+                Picture:
+                <a
+                  target="_blank"
+                  class="link-primary text-decoration-none"
+                  [href]="order?.picture"
+                  *ngIf="order?.picture; else emptyImageTemplate"
+                >
+                  Open in a new tab
+                  <mat-icon class="small">launch</mat-icon>
+                </a>
+                <ng-template #emptyImageTemplate>
+                  <b>Unknown</b>
+                </ng-template>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Resume:
+                <a
+                  target="_blank"
+                  class="link-primary text-decoration-none"
+                  [href]="order?.resume"
+                  *ngIf="order?.resume; else emptyResumeTemplate"
+                >
+                  Open in a new tab
+                  <mat-icon class="small">launch</mat-icon>
+                </a>
+                <ng-template #emptyResumeTemplate>
+                  <b>Unknown</b>
+                </ng-template>
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <ng-template [ngIf]="order?.service === 'musical-talent'">
+        <mat-card class="mb-4">
+          <mat-card-content>
+            <div class="d-flex flex-wrap my-2">
+              <div class="col-12 col-md-6">
+                <p>
+                  Instruments Played:
+                  <b>{{ order?.instrumentsPlayed || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-6">
+                <p>
+                  How Long Instruments Played:
+                  <b>{{ order?.howLongInstrumentsPlayed || "Unknown" }}</b>
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <ng-template [ngIf]="order?.service === 'influencers'">
+        <mat-card class="mb-4">
+          <mat-card-content>
+            <div class="d-flex flex-wrap my-2">
+              <div class="col-12 col-md-6">
+                <p>
+                  Interests And Field:
+                  <b>{{ order?.interestsAndField || "Unknown" }}</b>
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <ng-template [ngIf]="order?.service === 'professional-models'">
+        <mat-card class="mb-4">
+          <mat-card-content>
+            <div class="d-flex flex-wrap my-2">
+              <div class="col-12">
+                <h1>Dimensions</h1>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Gender:
+                  <b>{{ order?.dimensions?.gender || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Height:
+                  <b>{{ order?.dimensions?.height || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Weight:
+                  <b>{{ order?.dimensions?.weight || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  BustChest:
+                  <b>{{ order?.dimensions?.bustChest || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Waist:
+                  <b>{{ order?.dimensions?.waist || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  InseamOutseam:
+                  <b>{{ order?.dimensions?.inseamOutseam || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  DressOrSuitSize:
+                  <b>{{ order?.dimensions?.dressOrSuitSize || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  PantsSize:
+                  <b>{{ order?.dimensions?.pantsSize || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  ShoeSize:
+                  <b>{{ order?.dimensions?.shoeSize || "Unknown" }}</b>
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <mat-card class="mb-4">
+        <mat-card-content>
+          <div class="d-flex flex-wrap my-2">
+            <div class="col-12">
+              <h1>Social Media Accounts</h1>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Facebook:
+                <a
+                  target="_blank"
+                  class="link-primary text-decoration-none"
+                  [href]="order?.facebook"
+                  *ngIf="order?.facebook; else emptyFacebookTemplate"
+                >
+                  Open in a new tab
+                  <mat-icon class="small">launch</mat-icon>
+                </a>
+                <ng-template #emptyFacebookTemplate>
+                  <b>Unknown</b>
+                </ng-template>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Instagram:
+                <a
+                  target="_blank"
+                  class="link-primary text-decoration-none"
+                  [href]="order?.instagram"
+                  *ngIf="order?.instagram; else emptyInstagramTemplate"
+                >
+                  Open in a new tab
+                  <mat-icon class="small">launch</mat-icon>
+                </a>
+                <ng-template #emptyInstagramTemplate>
+                  <b>Unknown</b>
+                </ng-template>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Snapchat:
+                <a
+                  target="_blank"
+                  class="link-primary text-decoration-none"
+                  [href]="order?.snapchat"
+                  *ngIf="order?.snapchat; else emptySnapchatTemplate"
+                >
+                  Open in a new tab
+                  <mat-icon class="small">launch</mat-icon>
+                </a>
+                <ng-template #emptySnapchatTemplate>
+                  <b>Unknown</b>
+                </ng-template>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Tiktok:
+                <a
+                  target="_blank"
+                  class="link-primary text-decoration-none"
+                  [href]="order?.tiktok"
+                  *ngIf="order?.tiktok; else emptyTiktokTemplate"
+                >
+                  Open in a new tab
+                  <mat-icon class="small">launch</mat-icon>
+                </a>
+                <ng-template #emptyTiktokTemplate>
+                  <b>Unknown</b>
+                </ng-template>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Twitter:
+                <a
+                  target="_blank"
+                  class="link-primary text-decoration-none"
+                  [href]="order?.twitter"
+                  *ngIf="order?.twitter; else emptyTwitterTemplate"
+                >
+                  Open in a new tab
+                  <mat-icon class="small">launch</mat-icon>
+                </a>
+                <ng-template #emptyTwitterTemplate>
+                  <b>Unknown</b>
+                </ng-template>
+              </p>
+            </div>
+            <div class="col-12 col-md-6">
+              <p>
+                Youtube:
+                <a
+                  target="_blank"
+                  class="link-primary text-decoration-none"
+                  [href]="order?.youtube"
+                  *ngIf="order?.youtube; else emptyYoutubeTemplate"
+                >
+                  Open in a new tab
+                  <mat-icon class="small">launch</mat-icon>
+                </a>
+                <ng-template #emptyYoutubeTemplate>
+                  <b>Unknown</b>
+                </ng-template>
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <ng-template [ngIf]="order?.service === 'acting-talent'">
+        <mat-card class="mb-4">
+          <mat-card-content>
+            <div class="d-flex flex-wrap my-2">
+              <div class="col-12">
+                <h1>Interests And Category</h1>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  FilmAndTVActing:
+                  <b>
+                    {{
+                      order?.interestsAndCategory?.filmAndTVActing || "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  CommercialsActing:
+                  <b>
+                    {{
+                      order?.interestsAndCategory?.commercialsActing ||
+                        "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Drama:
+                  <b>{{ order?.interestsAndCategory?.drama || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  TheatreActing:
+                  <b>
+                    {{
+                      order?.interestsAndCategory?.theatreActing || "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  ExtraBackgroundActing:
+                  <b>
+                    {{
+                      order?.interestsAndCategory?.extraBackgroundActing ||
+                        "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Comedy:
+                  <b>{{ order?.interestsAndCategory?.comedy || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  VoiceOverActing:
+                  <b>
+                    {{
+                      order?.interestsAndCategory?.voiceOverActing || "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Classic:
+                  <b>{{ order?.interestsAndCategory?.classic || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Others:
+                  <b>{{ order?.interestsAndCategory?.others || "Unknown" }}</b>
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <ng-template [ngIf]="order?.service === 'voice-talent'">
+        <mat-card class="mb-4">
+          <mat-card-content>
+            <div class="d-flex flex-wrap my-2">
+              <div class="col-12">
+                <h1>Voice Classification</h1>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Range:
+                  <b>{{ order?.voiceClassification?.range || "Unknown" }}</b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  ToneQuality:
+                  <b>
+                    {{ order?.voiceClassification?.toneQuality || "Unknown" }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Intonation:
+                  <b>
+                    {{ order?.voiceClassification?.intonation || "Unknown" }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  SightSinging:
+                  <b>
+                    {{ order?.voiceClassification?.sightSinging || "Unknown" }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  MelodyMemorization:
+                  <b>
+                    {{
+                      order?.voiceClassification?.melodyMemorization ||
+                        "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Confidence:
+                  <b>
+                    {{ order?.voiceClassification?.confidence || "Unknown" }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  OverallRating:
+                  <b>
+                    {{ order?.voiceClassification?.overallRating || "Unknown" }}
+                  </b>
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <ng-template [ngIf]="order?.service === 'writing-talent'">
+        <mat-card class="mb-4">
+          <mat-card-content>
+            <div class="d-flex flex-wrap my-2">
+              <div class="col-12">
+                <h1>Writing Interests And Category</h1>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Poetry:
+                  <b>
+                    {{
+                      order?.writingInterestsAndCategory?.poetry || "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Drama:
+                  <b>
+                    {{ order?.writingInterestsAndCategory?.drama || "Unknown" }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  ScienceFiction:
+                  <b>
+                    {{
+                      order?.writingInterestsAndCategory?.scienceFiction ||
+                        "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  SongLyrics:
+                  <b>
+                    {{
+                      order?.writingInterestsAndCategory?.songLyrics ||
+                        "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Mystery:
+                  <b>
+                    {{
+                      order?.writingInterestsAndCategory?.mystery || "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Nonfiction:
+                  <b>
+                    {{
+                      order?.writingInterestsAndCategory?.nonfiction ||
+                        "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Fantasy:
+                  <b>
+                    {{
+                      order?.writingInterestsAndCategory?.fantasy || "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Biography:
+                  <b>
+                    {{
+                      order?.writingInterestsAndCategory?.biography || "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+              <div class="col-12 col-md-4">
+                <p>
+                  Fiction:
+                  <b>
+                    {{
+                      order?.writingInterestsAndCategory?.fiction || "Unknown"
+                    }}
+                  </b>
+                </p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
+
+      <mat-card class="mb-4">
+        <mat-card-content>
+          <div class="d-flex flex-wrap my-2">
+            <div class="col-12 col-md-6">
+              <p>
+                Final Package Link:
+                <b>{{ order?.finalPackageLink || "Unknown" }}</b>
+              </p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-12 my-2">
+      <mat-card class="mb-4">
+        <mat-card-content>
+          <app-order-comments-section></app-order-comments-section>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

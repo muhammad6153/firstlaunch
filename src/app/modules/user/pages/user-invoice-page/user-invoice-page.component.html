@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <h1 class="my-0">Invoices #{{ invoice?.publicId }}</h1>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <ng-container *ngIf="fetchingInvoice; else loadingContainer">
+      <div class="col-12 my-2">
+        <div class="d-flex align-items-center py-4">
+          <mat-spinner color="primary" diameter="45"></mat-spinner>
+          <span class="mx-3">Loading invoice...</span>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loadingContainer>
+      <div class="col-12 my-2" *ngIf="!invoice; else invoiceContainer">
+        <h1>You don't have any invoice yet!</h1>
+      </div>
+    </ng-template>
+    <ng-template #invoiceContainer>
+      <div class="col-12 my-2">
+        <mat-card>
+          <mat-card-content>
+            <h1>Invoice #{{ invoice?.publicId }}</h1>
+            <p>Status {{ invoice?.isPaid ? "Paid" : "Pending" }}</p>
+            <p>Amount {{ taxAmount }}{{ invoice?.currency }}</p>
+            <p>Created at {{ invoice?.creationDate | date }}</p>
+            <a
+              mat-raised-button
+              [routerLink]="['/user/invoice', invoice?.id]"
+              [disabled]="invoice?.isPaid"
+              color="primary"
+              class="mx-1"
+            >
+              {{ invoice?.isPaid ? "Paid" : "Pay" }}
+            </a>
+            <a
+              mat-button
+              [routerLink]="['/user/invoice', invoice?.id]"
+              class="mx-1"
+            >
+              Details
+            </a>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-template>
+  </div>
+</div>

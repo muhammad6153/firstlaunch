@@ -1,0 +1,117 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <h1 class="my-0">Pay Invoice</h1>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="col-12 my-2">
+      <mat-card>
+        <mat-card-content>
+          <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+            <div class="d-flex">
+              <div class="col-12 p-1">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>
+                    {{ "FORM_LABELS.CARD_HOLDER" | translate }}
+                  </mat-label>
+                  <input matInput required formControlName="cardHolder" />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="d-flex">
+              <div class="col-12 col-md-8 p-1">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>
+                    {{ "FORM_LABELS.CARD_NUMBER" | translate }}
+                  </mat-label>
+                  <input matInput required formControlName="pan" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-4 p-1">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>{{ "FORM_LABELS.CVV" | translate }}</mat-label>
+                  <input matInput required formControlName="cvv" />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="col-12 col-md-4 p-1">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>
+                    {{ "FORM_LABELS.EXP_YEAR" | translate }}
+                  </mat-label>
+                  <mat-select required formControlName="expiryYear">
+                    <mat-option value="21">21</mat-option>
+                    <mat-option value="22">22</mat-option>
+                    <mat-option value="23">23</mat-option>
+                    <mat-option value="24">24</mat-option>
+                    <mat-option value="25">25</mat-option>
+                    <mat-option value="26">26</mat-option>
+                    <mat-option value="27">27</mat-option>
+                    <mat-option value="28">28</mat-option>
+                    <mat-option value="29">29</mat-option>
+                    <mat-option value="30">30</mat-option>
+                    <mat-option value="31">31</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-4 p-1">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>
+                    {{ "FORM_LABELS.EXP_MONTH" | translate }}
+                  </mat-label>
+                  <mat-select required formControlName="expiryMonth">
+                    <mat-option value="1">01</mat-option>
+                    <mat-option value="2">02</mat-option>
+                    <mat-option value="3">03</mat-option>
+                    <mat-option value="4">04</mat-option>
+                    <mat-option value="5">05</mat-option>
+                    <mat-option value="6">06</mat-option>
+                    <mat-option value="7">07</mat-option>
+                    <mat-option value="8">08</mat-option>
+                    <mat-option value="9">09</mat-option>
+                    <mat-option value="10">10</mat-option>
+                    <mat-option value="11">11</mat-option>
+                    <mat-option value="12">12</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-2 p-1">
+                <img
+                  src="assets/icons/payment-methods/visa.svg"
+                  alt="Visa"
+                  class="d-block w-100"
+                />
+              </div>
+              <div class="col-12 col-md-2 p-1">
+                <img
+                  src="assets/icons/payment-methods/mastercard.svg"
+                  alt="Mastercard"
+                  class="d-block w-100"
+                />
+              </div>
+            </div>
+            <button
+              mat-raised-button
+              type="submit"
+              color="primary"
+              [disabled]="form.disabled || (form.touched && form.invalid)"
+            >
+              <mat-spinner
+                color="warn"
+                class="d-inline-block"
+                [diameter]="24"
+                *ngIf="form.disabled"
+              ></mat-spinner>
+              <span class="mx-2">
+                {{ "FORM_LABELS.SUBMIT" | translate }}
+              </span>
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

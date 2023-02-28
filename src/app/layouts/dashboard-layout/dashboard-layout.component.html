@@ -1,0 +1,147 @@
+<mat-drawer-container hasBackdrop autosize class="d-flex">
+  <mat-drawer #drawer mode="push" class="d-flex h-100">
+    <mat-list class="border border-light">
+      <a mat-list-item routerLink="/" class="mb-2" (click)="drawer.close()">
+        <app-brand-logo></app-brand-logo>
+      </a>
+      <mat-divider></mat-divider>
+      <a
+        mat-list-item
+        class="border border-light"
+        *ngFor="let link of links"
+        [routerLink]="link.href"
+        (click)="drawer.close()"
+      >
+        <mat-icon mat-list-icon>{{ link.icon }}</mat-icon>
+        <div mat-line>{{ link.title }}</div>
+      </a>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content
+    class="d-flex flex-column w-100"
+    style="min-height: 100vh"
+  >
+    <mat-toolbar>
+      <div class="container d-flex">
+        <button
+          mat-icon-button
+          (click)="drawer.toggle()"
+          class="d-block d-md-none"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-button routerLink="/" class="me-auto">
+          <app-brand-logo></app-brand-logo>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="Toggle fullscreen mode"
+          (click)="toggleFullscreen()"
+        >
+          <mat-icon>
+            {{ isFullscreen ? "fullscreen_exit" : "fullscreen" }}
+          </mat-icon>
+        </button>
+        <button mat-button [matMenuTriggerFor]="userMenu">
+          <span class="d-none d-md-inline-block mx-2">
+            {{ currentUser?.name }}
+          </span>
+          <mat-icon class="d-inline-block d-md-none">person</mat-icon>
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <ng-container>
+            <a mat-menu-item routerLink="/">
+              <mat-icon>home</mat-icon>
+              First Launch
+            </a>
+            <a mat-menu-item routerLink="/user">
+              <mat-icon>person_outline</mat-icon>
+              {{ "NAVBAR.USER_MENU.USER_AREA" | translate }}
+            </a>
+            <a mat-menu-item routerLink="/admin" *ngIf="isAdmin()">
+              <mat-icon>dashboard</mat-icon>
+              {{ "NAVBAR.USER_MENU.DASHBOARD" | translate }}
+            </a>
+            <a mat-menu-item routerLink="/partner" *ngIf="isPartner()">
+              <mat-icon>dashboard</mat-icon>
+              {{ "NAVBAR.USER_MENU.PARTNER" | translate }}
+            </a>
+            <a
+              mat-menu-item
+              routerLink="/collaborator"
+              *ngIf="isCollaborator()"
+            >
+              <mat-icon>dashboard</mat-icon>
+              {{ "NAVBAR.USER_MENU.COLLABORATOR" | translate }}
+            </a>
+            <a mat-menu-item routerLink="/coordinator" *ngIf="isCoordinator()">
+              <mat-icon>dashboard</mat-icon>
+              {{ "NAVBAR.USER_MENU.COORDINATOR" | translate }}
+            </a>
+            <button mat-menu-item (click)="matThemeService.toggleDarkMode()">
+              <mat-icon>
+                {{ matThemeService.isDarkModeEnabled ? "wb_sunny" : "bedtime" }}
+              </mat-icon>
+              <span>
+                {{
+                  (matThemeService.isDarkModeEnabled
+                    ? "WORDS.SWITCH_TO_LIGHT_MODE"
+                    : "WORDS.SWITCH_TO_DARK_MODE"
+                  ) | translate
+                }}
+              </span>
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="langMenu">
+              <mat-icon>translate</mat-icon>
+              {{ "NAVBAR.USER_MENU.LANGUAGE" | translate }}
+            </button>
+            <button mat-menu-item (click)="handleSignOut()">
+              <mat-icon>power_settings_new</mat-icon>
+              {{ "NAVBAR.USER_MENU.SIGN_OUT" | translate }}
+            </button>
+          </ng-container>
+        </mat-menu>
+        <mat-menu #langMenu="matMenu">
+          <ng-container>
+            <button mat-menu-item (click)="setLanguage('ar')">
+              <mat-icon svgIcon="arabic"></mat-icon>
+              <span>العربية</span>
+            </button>
+            <button mat-menu-item (click)="setLanguage('en')">
+              <mat-icon svgIcon="english"></mat-icon>
+              <span>English</span>
+            </button>
+          </ng-container>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+    <div class="container my-4 flex-grow-1">
+      <div class="d-flex flex-wrap w-100">
+        <div class="col-12 col-md-3 d-none d-md-block">
+          <mat-list class="py-0 border border-light rounded">
+            <a
+              mat-list-item
+              class="border-light"
+              routerLinkActive="active"
+              *ngFor="let link of links; let idx = index"
+              [class.border-bottom]="idx < links.length - 1"
+              [routerLink]="link.href"
+              [routerLinkActiveOptions]="{
+                exact: link.href === '/user' || link.href === '/admin'
+              }"
+            >
+              <div mat-line>{{ link.title }}</div>
+            </a>
+          </mat-list>
+        </div>
+        <div class="col-12 col-md-9">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+    <footer class="mat-app-background-dark text-center">
+      <p class="my-3">&copy; First Launch {{ year }}</p>
+    </footer>
+  </mat-drawer-content>
+</mat-drawer-container>

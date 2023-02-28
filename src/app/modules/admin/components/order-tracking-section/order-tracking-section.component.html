@@ -1,0 +1,43 @@
+<div class="col-12 my-2 overflow-auto">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Order Tracking</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item
+          role="listitem"
+          *ngFor="let step of steps; let idx = index"
+          [class.text-muted]="
+            orderTrack && orderTrack.currentStateIndicator < idx
+          "
+        >
+          <mat-chip-list>
+            <mat-chip
+              color="primary"
+              [selected]="orderTrack && orderTrack.currentStateIndicator >= idx"
+            >
+              {{ idx + 1 }}
+            </mat-chip>
+          </mat-chip-list>
+          <span class="mx-3 small">{{ step | translate }}</span>
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="loading"
+            *ngIf="orderTrack && orderTrack.currentStateIndicator === idx"
+            (click)="incrementCurrentState()"
+          >
+            <mat-spinner
+              color="warn"
+              class="d-inline-block"
+              [diameter]="24"
+              *ngIf="loading"
+            ></mat-spinner>
+            <span class="mx-2">Mark as done</span>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <h1 class="my-0">Portfolio Item</h1>
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            matTooltip="Reload page data"
+            (click)="fetchData()"
+          >
+            <mat-icon [class.spinner]="loading">sync</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="col-12 my-2">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ item?.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <img
+            class="d-block w-100"
+            [src]="item?.imageUrl"
+            [alt]="item?.title"
+          />
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="warn"
+            [disabled]="loading"
+            (click)="deleteItem()"
+          >
+            <mat-spinner
+              color="warn"
+              class="d-inline-block"
+              [diameter]="24"
+              *ngIf="loading"
+            ></mat-spinner>
+            <span class="mx-2">Delete</span>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

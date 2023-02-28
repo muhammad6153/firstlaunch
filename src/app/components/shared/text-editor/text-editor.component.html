@@ -1,0 +1,105 @@
+<div class="border rounded">
+  <div class="d-flex flex-column justify-content-center p-3">
+    <ng-container *ngIf="!dragDropAreaVisible; else dragDropArea">
+      <textarea
+        matInput
+        [(ngModel)]="newComment"
+        placeholder="Write your comment"
+        class="bg-transparent border-0"
+        rows="5"
+      ></textarea>
+    </ng-container>
+    <ng-template #dragDropArea>
+      <ngx-file-drag-drop
+        #dragDropArea
+        [multiple]="true"
+        [displayFileSize]="true"
+        activeBorderColor="#fb8c00"
+        accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*, video/*, audio/*"
+        [formControl]="fileControl"
+        class="w-100"
+      ></ngx-file-drag-drop>
+      <span class="small text-muted text-center">
+        accepts word, excel, powerpoint, text, pdf, image, video, and audio
+      </span>
+      <div class="text-center">
+        <button
+          mat-stroked-button
+          color="primary"
+          class="d-inline-block m-2"
+          (click)="addAttachments()"
+          [disabled]="dragDropArea.isEmpty || !!fileControl.errors"
+        >
+          Add Attachments
+        </button>
+        <button
+          mat-stroked-button
+          color="warn"
+          class="d-inline-block m-2"
+          (click)="dragDropAreaVisible = false"
+        >
+          Cancel
+        </button>
+      </div>
+      <mat-error
+        *ngIf="fileControl.errors && fileControl.errors.uniqueFileNames"
+      >
+        File names must be unique!
+      </mat-error>
+      <mat-error *ngIf="fileControl.errors && fileControl.errors.maxFileSize">
+        Please select files with maximum size of 10MB!
+      </mat-error>
+      <mat-error *ngIf="fileControl.errors && fileControl.errors.maxFileCount">
+        Please select maximum 6 files!
+      </mat-error>
+      <mat-error *ngIf="fileControl.errors && fileControl.errors.fileType">
+        File type is not supported!
+      </mat-error>
+    </ng-template>
+    <ng-container *ngIf="newCommentAttachments.length && !dragDropAreaVisible">
+      <div class="border-top border-light pt-3">
+        <div *ngFor="let attachment of newCommentAttachments">
+          <span>{{ attachment.name }}</span>
+          <span class="small text-muted">({{ attachment.size | byte }})</span>
+          <button
+            mat-icon-button
+            matTooltip="Remove file"
+            (click)="removeAttachment(attachment)"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="d-flex flex-row border-top p-3">
+    <div class="d-flex flex-grow-1">
+      <button
+        mat-button
+        class="d-flex align-items-center justify-content-center"
+        (click)="dragDropAreaVisible = !dragDropAreaVisible"
+        [disabled]="dragDropAreaVisible"
+      >
+        <mat-icon style="transform: rotate(90deg)">attachment</mat-icon>
+        <span class="mx-2">Attach files</span>
+      </button>
+      <button mat-icon-button matTooltip="Voice" class="d-none">
+        <mat-icon>mic</mat-icon>
+      </button>
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addComment()"
+      [disabled]="loadingNewComment"
+    >
+      <mat-spinner
+        color="warn"
+        class="d-inline-block"
+        [diameter]="24"
+        *ngIf="loadingNewComment"
+      ></mat-spinner>
+      <span class="mx-2">Add Comment</span>
+    </button>
+  </div>
+</div>

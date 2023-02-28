@@ -1,0 +1,38 @@
+@import "../../../../styles/colors";
+
+.heading-section {
+  height: calc(100vh - 77px);
+}
+
+.heading-section video {
+  object-fit: cover;
+  min-width: 100%;
+}
+
+.heading-section .video-overlay {
+  opacity: 0.7;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.sponsors-section img {
+  filter: contrast(200%) brightness(150%) invert(50%);
+}
+
+.services-section .section-title::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 140%;
+  top: 50%;
+  left: -20%;
+  height: 4px;
+  background-color: $primary;
+  z-index: -1;
+}
+
+.slide:focus {
+  outline: none;
+}

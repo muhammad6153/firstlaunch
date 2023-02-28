@@ -1,0 +1,134 @@
+<div class="container">
+  <ng-template [ngIf]="isAdmin()">
+    <div class="d-flex flex-column flex-wrap align-items-center">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <h1 class="my-0">Dashboard</h1>
+          </div>
+          <div>
+            <button
+              mat-icon-button
+              matTooltip="Reload page data"
+              (click)="fetchData()"
+            >
+              <mat-icon [class.spinner]="fetchingData">sync</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-2">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="col-12 my-2">
+        <div class="d-flex flex-wrap">
+          <div class="col-12 p-2 text-white">
+            <mat-card>
+              <mat-card-header class="flex-column">
+                <mat-card-title>Users</mat-card-title>
+                <mat-card-subtitle>
+                  Number of new users over time
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content class="position-relative">
+                <mat-spinner
+                  *ngIf="fetchingData"
+                  class="position-absolute"
+                ></mat-spinner>
+                <canvas
+                  baseChart
+                  chartType="line"
+                  height="100"
+                  [datasets]="usersChartData"
+                  [labels]="usersChartLabels"
+                  [options]="{ responsive: true }"
+                  [legend]="false"
+                ></canvas>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-12 col-md-6 p-2 text-white">
+            <mat-card>
+              <mat-card-header class="flex-column">
+                <mat-card-title>Orders</mat-card-title>
+                <mat-card-subtitle>
+                  Number of new orders over time
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content class="position-relative">
+                <mat-spinner
+                  *ngIf="fetchingData"
+                  class="position-absolute"
+                ></mat-spinner>
+                <canvas
+                  baseChart
+                  chartType="line"
+                  [datasets]="ordersChartData"
+                  [labels]="ordersChartLabels"
+                  [options]="{ responsive: true }"
+                  [legend]="false"
+                ></canvas>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-12 col-md-6 p-2 text-white">
+            <mat-card>
+              <mat-card-header class="flex-column">
+                <mat-card-title>Invoices</mat-card-title>
+                <mat-card-subtitle>
+                  Number of new invoices over time
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content class="position-relative">
+                <mat-spinner
+                  *ngIf="fetchingData"
+                  class="position-absolute"
+                ></mat-spinner>
+                <canvas
+                  baseChart
+                  chartType="line"
+                  [datasets]="invoicesChartData"
+                  [labels]="invoicesChartLabels"
+                  [options]="{ responsive: true }"
+                  [legend]="false"
+                ></canvas>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template [ngIf]="isPartner() || isCollaborator() || isCoordinator()">
+    <div class="d-flex flex-column flex-wrap align-items-center">
+      <div class="col-12">
+        <div class="d-flex align-items-center justify-content-between">
+          <div>
+            <h1 class="my-0" *ngIf="isPartner()">Partner Dashboard</h1>
+            <h1 class="my-0" *ngIf="isCollaborator()">
+              Collaborator Dashboard
+            </h1>
+            <h1 class="my-0" *ngIf="isCoordinator()">Coordinator Dashboard</h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 my-2">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="col-12 my-2">
+        <div class="d-flex flex-wrap">
+          <div class="col-12 p-2 text-white">
+            <mat-card>
+              <mat-card-content>
+                <h2 class="mb-1">Welcome, {{ user?.name }}!</h2>
+                <p *ngIf="isPartner()">To the Partners Dashboard</p>
+                <p *ngIf="isCollaborator()">To the Collaborators Dashboard</p>
+                <p *ngIf="isCoordinator()">To the Coordinators Dashboard</p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

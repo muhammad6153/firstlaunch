@@ -1,0 +1,40 @@
+<div
+  dir="ltr"
+  class="d-flex flex-wrap justify-content-center align-items-center py-5 container"
+  style="max-width: 935px !important"
+>
+  <div
+    dir="ltr"
+    class="col-4 text-center position-relative overflow-hidden p-1 p-md-2"
+    *ngFor="let item of visibleItems()"
+  >
+    <img
+      dir="ltr"
+      [src]="item.imageUrl"
+      [alt]="item.title"
+      class="d-block image-not-selected"
+      *ngIf="item.type === 'image'"
+      (click)="openDialog('image', item.imageUrl)"
+    />
+    <video
+      dir="ltr"
+      class="d-block image-not-selected"
+      *ngIf="item.type === 'video'"
+      (click)="openDialog('video', item.imageUrl)"
+    >
+      <source [src]="item.imageUrl" type="video/mp4" />
+    </video>
+    <img
+      *ngIf="item.type === 'video'"
+      src="/assets/video-thumbnail.png"
+      class="d-block video-thumbnail"
+      (click)="openDialog('video', item.imageUrl)"
+    />
+  </div>
+  <ng-container *ngIf="fetchingItems">
+    <div class="text-center">
+      <mat-spinner></mat-spinner>
+      <p class="my-4">{{ "WORDS.LOADING" | translate }}</p>
+    </div>
+  </ng-container>
+</div>

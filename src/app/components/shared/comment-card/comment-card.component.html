@@ -1,0 +1,34 @@
+<div class="col-12 my-2">
+  <mat-card class="p-4">
+    <mat-card-header class="border-bottom border-light">
+      <div
+        mat-card-avatar
+        [ngStyle]="{
+          'background-image': avatarUrl(comment.userName),
+          'background-size': 'cover'
+        }"
+      ></div>
+      <mat-card-title>{{ comment.userName }}</mat-card-title>
+      <mat-card-subtitle>{{ comment.creationDate | date }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="px-2 pt-4 pb-2">
+        <div>
+          <p>{{ comment.comment }}</p>
+        </div>
+        <div *ngIf="comment.attachments.length">
+          <hr />
+          <p>Attachments</p>
+          <ul>
+            <li *ngFor="let attachment of comment.attachments">
+              <a [href]="attachment" target="_blank">
+                <span>{{ attachmentName(attachment) }}</span>
+                <mat-icon class="small mx-1">launch</mat-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

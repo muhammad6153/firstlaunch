@@ -1,0 +1,21 @@
+<section
+  class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5 container"
+>
+  <div class="col-12 text-center">
+    <h1
+      class="section-title mat-display-1 d-inline-block mb-3 px-2 py-2 position-relative mat-app-background border-bottom border-primary"
+    >
+      {{ "TEAM_SECTION.TITLE" | translate }}
+    </h1>
+  </div>
+  <div class="d-flex justify-content-center align-items-center flex-wrap w-100">
+    <div
+      class="col-12 col-md-6 col-lg-4 text-center my-3 p-5"
+      *ngFor="let member of team"
+    >
+      <img [src]="member.img" [alt]="member.name" width="100%" />
+      <h2 class="text-center mt-3 mb-1">{{ member.name | translate }}</h2>
+      <h3 class="text-center text-muted">{{ member.title | translate }}</h3>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 15rem;
+  background-color: transparent;
+}
+
+textarea:focus {
+  outline: none;
+}

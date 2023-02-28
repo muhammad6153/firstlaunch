@@ -1,0 +1,144 @@
+<section
+  class="heading-section d-inline-block position-relative w-100 overflow-hidden"
+>
+  <video autoplay loop class="position-absolute top-0 start-0 h-100 bg-dark">
+    <source src="assets/videos/landing-video.mp4" type="video/mp4" />
+  </video>
+  <div
+    class="video-overlay d-inline-block position-absolute top-0 start-0 h-100 w-100 mat-app-background"
+  ></div>
+  <div
+    class="d-flex flex-wrap justify-content-center align-items-center container w-100 h-100"
+  >
+    <div class="col-12 col-lg-6 text-center">
+      <h1 class="mb-5 mat-display-1 position-relative">
+        {{ "HOME_PAGE.HEADING_SECTION.TITLE_PREFIX" | translate }}
+        <span class="fw-bold border-bottom border-3 border-primary">
+          {{ "HOME_PAGE.HEADING_SECTION.TITLE" | translate }}
+        </span>
+        {{ "HOME_PAGE.HEADING_SECTION.TITLE_SUFFIX" | translate }}
+      </h1>
+      <a
+        mat-raised-button
+        class="text-decoration-none px-4 py-1"
+        routerLink="/services"
+        color="primary"
+      >
+        {{ "HOME_PAGE.HEADING_SECTION.CALL_TO_ACTION_LINK" | translate }}
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5 container" id="service">
+  <div class="col-12 text-center">
+    <h1 class="section-title mat-display-1 d-inline-block mb-3 px-2 position-relative mat-app-background">
+      {{ "SERVICES_SECTION.TITLE" | translate }}
+    </h1>
+  </div>
+  <app-service-cards></app-service-cards>
+</section>
+
+<!-- <section
+  class="sponsors-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5"
+>
+  <div class="col-12 col-lg-6 my-2">
+    <img
+      src="assets/logos/gea-gov-sa.png"
+      alt="General Entertainment Authority - Saudi Arabia"
+      class="d-block mx-auto"
+    />
+  </div>
+  <div class="col-12 col-lg-6 my-2">
+    <img
+      src="assets/logos/media-gov-sa.png"
+      alt="Ministry of Media - Saudi Arabia"
+      class="d-block mx-auto"
+    />
+  </div>
+</section> -->
+
+<section class="about-section py-5 my-5 container" id="about-us">
+  <div class="d-flex justify-content-center align-items-center flex-wrap w-100">
+    <div class="col-12 col-lg-6 my-3 px-lg-4">
+      <h1 class="mat-headline">
+        {{ "HOME_PAGE.ABOUT_SECTION.TITLE_PREFIX" | translate }}
+        <span class="fw-bold border-bottom border-3 border-primary">
+          {{ "HOME_PAGE.ABOUT_SECTION.TITLE" | translate }}
+        </span>
+        {{ "HOME_PAGE.ABOUT_SECTION.TITLE_SUFFIX" | translate }}
+      </h1>
+      <p class="text-justify">
+        {{ "HOME_PAGE.ABOUT_SECTION.PARAGRAPH_0" | translate }}
+      </p>
+      <p class="text-justify">
+        {{ "HOME_PAGE.ABOUT_SECTION.PARAGRAPH_1" | translate }}
+      </p>
+    </div>
+    <ngx-slick-carousel
+      class="carousel col-12 col-lg-6 my-3"
+      [config]="videoSlideConfig"
+    >
+      <div ngxSlickItem *ngFor="let video of videos" class="slide h-100">
+        <div
+          class="w-100 rounded mat-elevation-z24 overflow-hidden position-relative"
+        >
+          <img
+            [src]="video.thumb"
+            alt="Motion Graphics Video"
+            class="d-block w-100 h-100"
+          />
+          <div
+            class="position-absolute w-100 h-100 left-0 top-0 d-flex align-items-center justify-content-center"
+            style="background-color: rgba(0, 0, 0, 0.4)"
+          >
+            <button
+              mat-raised-button
+              color="primary"
+              class="p-3 rounded-circle mat-elevation-z24"
+              (click)="openDialog(video)"
+            >
+              <mat-icon>play_arrow</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</section>
+
+<section
+  class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5 container" id="talent-track"
+>
+  <div class="col-12 text-center">
+    <h1
+      class="section-title mat-display-1 d-inline-block mb-3 px-2 position-relative mat-app-background"
+    >
+      {{ "TALENT_SECTION.TITLE" | translate }}
+    </h1>
+  </div>
+  <app-service-cards></app-service-cards>
+</section>
+
+<section
+  class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5 container" id="team"
+>
+  <div class="col-12 text-center">
+    <h1
+      class="section-title mat-display-1 d-inline-block mb-3 px-2 position-relative mat-app-background"
+    >
+      {{ "TEAM_SECTION.TITLE" | translate }}
+    </h1>
+  </div>
+  <ngx-slick-carousel class="carousel mt-5 col-12" [config]="slideConfig">
+    <div ngxSlickItem *ngFor="let member of team" class="slide p-3">
+      <img [src]="member.img" [alt]="member.name" width="100%" />
+      <h2 class="text-center mt-3 mb-1">{{ member.name | translate }}</h2>
+      <p class="text-center text-muted">{{ member.title | translate }}</p>
+    </div>
+  </ngx-slick-carousel>
+  <a mat-flat-button routerLink="/team" class="mb-2 my-4 mb-lg-0" color="primary">
+    {{ "WORDS.VIEW_MORE" | translate }}
+  </a>
+</section>

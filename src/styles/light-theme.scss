@@ -1,0 +1,45 @@
+// Include material theming lib.
+@import "~@angular/material/theming";
+
+// Render core material styles.
+@include mat-core();
+
+// Defined app's custom theme.
+$theme: mat-light-theme(
+  (
+    color: (
+      primary: mat-palette($mat-orange),
+      accent: mat-palette($mat-purple),
+    ),
+  )
+);
+
+@include mat-base-typography(
+  mat-typography-config(
+    $font-family: 'Tajawal, Roboto, "Helvetica Neue", sans-serif'
+  )
+);
+
+@include mat-button-typography(
+  mat-typography-config($font-family: 'Tajawal, Roboto, "Helvetica Neue", sans-serif')
+);
+
+// Include the light theme.
+@include angular-material-theme($theme);
+
+// Set hovered link color to primary.
+a:hover {
+  $config: mat-get-color-config($theme);
+  $primary: map-get($config, primary);
+  color: mat-color($primary, text);
+}
+
+// Defined a custom class to apply the darker
+// background color to non-material components.
+.mat-app-background-dark {
+  $config: mat-get-color-config($theme);
+  $background: map-get($config, background);
+  $foreground: map-get($config, foreground);
+  background: mat-color($background, app-bar);
+  color: mat-color($foreground, text);
+}

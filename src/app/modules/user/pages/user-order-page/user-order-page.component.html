@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center py-4">
+    <div class="col-12 my-3">
+      <h1 class="fw-bold d-inline-block">Order #{{ order?.publicId }}</h1>
+    </div>
+    <ng-container *ngIf="fetchingOrder; else loadingContainer">
+      <div class="col-12 col-md-10 my-2" *ngIf="fetchingOrder">
+        <div class="d-flex align-items-center py-4">
+          <mat-spinner color="primary" diameter="45"></mat-spinner>
+          <span class="mx-3">Loading order...</span>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loadingContainer>
+      <div class="col-12 col-md-10 my-2" *ngIf="!order; else orderContainer">
+        <div role="alert" class="alert alert-danger">
+          <h1 class="my-0">Order not found!</h1>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #orderContainer>
+      <div class="col-12 col-md-10 my-2">
+        <mat-card>
+          <mat-card-content>
+            <h1>Order #{{ order?.publicId }}</h1>
+            <h2 class="text-capitalize">{{ order?.plan }} Plan</h2>
+            <h2 class="text-capitalize">
+              {{ order?.service?.replace("-", " ") }} Service
+            </h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-template>
+  </div>
+</div>

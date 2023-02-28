@@ -1,0 +1,24 @@
+@import "../../../../styles/colors";
+
+.pricing-card {
+  transition: all 200ms ease-in-out;
+  user-select: none;
+  cursor: pointer;
+
+  &:not(.active) {
+    opacity: 0.5;
+    border: 1px solid rgba($primary, 0.2);
+    hr {
+      background-color: rgba($primary, 0.2);
+    }
+  }
+
+  &.active {
+    opacity: 1;
+    transform: scale(1.1);
+    border: 1px solid $primary;
+    hr {
+      background-color: $primary;
+    }
+  }
+}

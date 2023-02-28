@@ -1,0 +1,18 @@
+a:hover {
+  color: #646669 !important;
+}
+
+.social-media-link {
+  &.facebook:hover {
+    color: #3b5998 !important;
+  }
+  &.twitter:hover {
+    color: #00acee !important;
+  }
+  &.instagram:hover {
+    color: #d6249f !important;
+  }
+  &.youtube:hover {
+    color: #ff0000 !important;
+  }
+}

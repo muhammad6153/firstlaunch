@@ -1,0 +1,44 @@
+<h1>Add new portfolio item</h1>
+
+<p>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="title" />
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field
+    appearance="outline"
+    class="w-100"
+    (click)="imageInput.click()"
+  >
+    <mat-label>Image</mat-label>
+    <input matInput [value]="imageInput.value" />
+  </mat-form-field>
+</p>
+
+<input
+  type="file"
+  accept="image/*"
+  class="d-none"
+  (change)="handleImageChange($event)"
+  #imageInput
+/>
+
+<button
+  mat-raised-button
+  type="submit"
+  color="primary"
+  class="w-100 py-1"
+  [disabled]="!canSubmit() || loading"
+  (click)="submit()"
+>
+  <mat-spinner
+    color="warn"
+    class="d-inline-block"
+    [diameter]="24"
+    *ngIf="loading"
+  ></mat-spinner>
+  <span class="mx-2">Submit</span>
+</button>

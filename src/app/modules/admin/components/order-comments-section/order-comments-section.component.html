@@ -1,0 +1,33 @@
+<h1>Order Comments</h1>
+
+<div class="d-flex flex-column">
+  <div class="col-12 my-2" *ngFor="let comment of comments">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ comment.userName }}</mat-card-title>
+        <mat-card-subtitle>{{ comment.creationDate | date }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>{{ comment.comment }}</mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<mat-form-field appearance="outline" class="w-100">
+  <mat-label>Write your comment</mat-label>
+  <textarea matInput [(ngModel)]="newComment" rows="5"></textarea>
+</mat-form-field>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="addComment()"
+  [disabled]="loading"
+>
+  <mat-spinner
+    color="warn"
+    class="d-inline-block"
+    [diameter]="24"
+    *ngIf="loading"
+  ></mat-spinner>
+  <span class="mx-2">Add Comment</span>
+</button>

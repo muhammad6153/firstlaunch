@@ -1,0 +1,11 @@
+.mat-toolbar {
+  transition: background, box-shadow 200ms;
+}
+
+.navbar-brand:hover {
+  color: inherit;
+}
+
+.sticky-top {
+  z-index: 999 !important;
+}

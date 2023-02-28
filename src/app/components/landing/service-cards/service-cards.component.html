@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center align-items-center flex-wrap w-100">
+  <a
+    class="service-card col-12 col-md-6 col-lg-4 text-center my-5 text-decoration-none rounded"
+    *ngFor="let service of services"
+    [routerLink]="['/service', service.name]"
+    [queryParams]="{ plan: plan }"
+  >
+    <figure
+      class="d-inline-block mx-auto rounded-circle overflow-hidden mb-4"
+      [style]="{ backgroundImage: 'url(' + service.iconUrl + ')' }"
+    ></figure>
+    <h2 class="mat-app-background">
+      <span *ngIf="service.titlePrefix">
+        {{ service.titlePrefix | translate }}&nbsp;
+      </span>
+      <span class="text-primary">
+        {{ service.title | translate }}
+      </span>
+      <span *ngIf="service.titleSuffix">
+        &nbsp;{{ service.titleSuffix | translate }}
+      </span>
+    </h2>
+    <p class="text-muted">
+      {{ service.slogan | translate }}
+    </p>
+  </a>
+</div>

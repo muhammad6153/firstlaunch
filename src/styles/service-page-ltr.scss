@@ -1,0 +1,207 @@
+@use "sass:map";
+
+@import "service-page-common";
+
+$step-indicator-next-to-right: (
+  width: 10rem,
+  height: 1px,
+  right: -20%,
+  top: 30%,
+  left: unset,
+  bg-deg: 90deg,
+);
+
+$step-indicator-next-to-left: (
+  width: 10rem,
+  height: 1px,
+  right: unset,
+  top: 30%,
+  left: -20%,
+  bg-deg: 270deg,
+);
+
+$step-indicator-next-to-bottom: (
+  width: 1px,
+  height: 6rem,
+  left: 50%,
+  right: unset,
+  top: 95%,
+  bg-deg: 180deg,
+);
+
+$step-indicator: (
+  1: (
+    sm:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 1,
+        )
+      ),
+    md:
+      map.merge(
+        $step-indicator-next-to-right,
+        (
+          order: 1,
+        )
+      ),
+    lg:
+      map.merge(
+        $step-indicator-next-to-right,
+        (
+          order: 1,
+        )
+      ),
+  ),
+  2: (
+    sm:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 2,
+        )
+      ),
+    md:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 2,
+        )
+      ),
+    lg:
+      map.merge(
+        $step-indicator-next-to-right,
+        (
+          order: 2,
+        )
+      ),
+  ),
+  3: (
+    sm:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 3,
+        )
+      ),
+    md:
+      map.merge(
+        $step-indicator-next-to-left,
+        (
+          order: 4,
+        )
+      ),
+    lg:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 3,
+        )
+      ),
+  ),
+  4: (
+    sm:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 4,
+        )
+      ),
+    md:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 3,
+        )
+      ),
+    lg:
+      map.merge(
+        $step-indicator-next-to-left,
+        (
+          order: 6,
+        )
+      ),
+  ),
+  5: (
+    sm:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 5,
+        )
+      ),
+    md:
+      map.merge(
+        $step-indicator-next-to-right,
+        (
+          order: 5,
+        )
+      ),
+    lg:
+      map.merge(
+        $step-indicator-next-to-left,
+        (
+          order: 5,
+        )
+      ),
+  ),
+  6: (
+    sm:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 6,
+        )
+      ),
+    md:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 6,
+        )
+      ),
+    lg:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 4,
+        )
+      ),
+  ),
+  7: (
+    sm:
+      map.merge(
+        $step-indicator-next-to-bottom,
+        (
+          order: 7,
+        )
+      ),
+    md:
+      map.merge(
+        $step-indicator-next-to-left,
+        (
+          order: 8,
+        )
+      ),
+    lg:
+      map.merge(
+        $step-indicator-next-to-right,
+        (
+          order: 7,
+        )
+      ),
+  ),
+  8: (
+    sm: (
+      order: 8,
+    ),
+    md: (
+      order: 7,
+    ),
+    lg: (
+      order: 8,
+    ),
+  ),
+);
+
+@include step-styles($step-indicator, ltr);

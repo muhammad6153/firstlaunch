@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <h1 class="my-0">Portfolio</h1>
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            matTooltip="Reload page data"
+            (click)="fetchData()"
+          >
+            <mat-icon [class.spinner]="fetchingPortfolioItems">sync</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="col-12 my-2">
+      <div class="d-flex align-items-center mb-3">
+        <div class="flex-grow-1">
+          <mat-form-field
+            appearance="outline"
+            class="w-100 without-subscript"
+            matTooltip="Filter table data"
+          >
+            <mat-label>Filter</mat-label>
+            <input
+              matInput
+              autocomplete="off"
+              (keyup)="applyFilter($event)"
+              #input
+            />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            class="mx-1"
+            matTooltip="Download table data"
+            (click)="downloadData()"
+          >
+            <mat-icon>get_app</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            matTooltip="Add new item"
+            (click)="openNewItemDialog()"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="mat-elevation-z8 w-100 overflow-auto position-relative">
+        <table matSort mat-table [dataSource]="dataSource" class="w-100">
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              ID.
+            </mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              {{ item.id }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="imageUrl">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Image
+            </mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              <img
+                [src]="item.imageUrl"
+                [alt]="item.title"
+                class="d-block"
+                width="50"
+              />
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Title
+            </mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              <span class="text-truncate pe-3">{{ item.title }}</span>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="creationDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Created At
+            </mat-header-cell>
+            <mat-cell *matCellDef="let item">
+              <span class="text-truncate pe-3">
+                {{ item.creationDate | date }}
+              </span>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="disclaimer">
+            <td *matFooterCellDef class="small text-muted p-3">
+              <p class="my-0">Pro Tips:</p>
+              <ul>
+                <li>
+                  Use the "Filter" input above the table to search the data
+                  inside the table.
+                </li>
+                <li>
+                  Click on the column header to sort the data in the table based
+                  on this column.
+                </li>
+                <li>
+                  Click again on the column header to sort the data in the table
+                  based on this column in descending order.
+                </li>
+              </ul>
+            </td>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            [routerLink]="['/admin/portfolio', row.id]"
+          ></mat-row>
+          <mat-footer-row *matFooterRowDef="['disclaimer']"></mat-footer-row>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell">
+              <span *ngIf="!fetchingPortfolioItems">
+                No data matching the filter "{{ input.value }}"
+              </span>
+            </td>
+          </tr>
+        </table>
+
+        <mat-paginator
+          showFirstLastButtons
+          [pageSizeOptions]="[5, 10, 25, 100]"
+        ></mat-paginator>
+
+        <mat-spinner
+          *ngIf="fetchingPortfolioItems"
+          class="position-absolute"
+        ></mat-spinner>
+      </div>
+    </div>
+  </div>
+</div>

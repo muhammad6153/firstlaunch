@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <h1 class="my-0">Invoices</h1>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <ng-container *ngIf="fetchingInvoices; else loadingContainer">
+      <div class="col-12 my-2" *ngIf="fetchingInvoices">
+        <div class="d-flex align-items-center py-4">
+          <mat-spinner color="primary" diameter="45"></mat-spinner>
+          <span class="mx-3">Loading invoices...</span>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loadingContainer>
+      <div class="col-12 my-2" *ngIf="!invoices.length">
+        <h1>You don't have any invoices yet!</h1>
+      </div>
+    </ng-template>
+    <div class="col-12 my-2" *ngFor="let invoice of invoices">
+      <mat-card class="border border-light">
+        <mat-card-header
+          class="border-bottom border-light d-flex align-items-center justify-content-between pb-2"
+        >
+          <mat-card-title class="my-0">
+            Invoice #{{ invoice.publicId }}
+          </mat-card-title>
+          <div>
+            <a
+              mat-button
+              [routerLink]="['/user/invoices', invoice.id]"
+              class="mx-1 d-none"
+            >
+              Details
+            </a>
+            <button
+              mat-raised-button
+              color="primary"
+              class="mx-1"
+              (click)="handlePayInvoice(invoice.id)"
+              [disabled]="payingInvoice"
+              *ngIf="!invoice.isPaid; else paidLabel"
+            >
+              <mat-spinner
+                color="warn"
+                class="d-inline-block"
+                [diameter]="24"
+                *ngIf="payingInvoice"
+              ></mat-spinner>
+              <span class="mx-2">Pay</span>
+            </button>
+            <ng-template #paidLabel>
+              <span class="text-success px-3 fw-bold">Paid</span>
+            </ng-template>
+          </div>
+        </mat-card-header>
+        <mat-card-content class="p-2">
+          <div class="d-flex align-items-center justify-content-between p-2">
+            <p class="my-0">{{ invoice.description }}</p>
+            <p class="my-0 fw-bolder">
+              {{ invoice.amount }}.00{{ invoice.currency }}
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

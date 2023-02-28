@@ -1,0 +1,450 @@
+{
+  "WORDS": {
+    "VIEW_MORE": "View More",
+    "LOADING": "Loading...",
+    "SWITCH_TO_DARK_MODE": "Switch to dark mode",
+    "SWITCH_TO_LIGHT_MODE": "Switch to light mode"
+  },
+  "NAVBAR": {
+    "LINKS": {
+      "HOME": "Home",
+      "SERVICES": "Services",
+      "PRICING": "Pricing",
+      "PORTFOLIO": "Portfolio",
+      "ABOUT_US": "About Us",
+      "CONTACT_US": "Launch with us",
+      "LOGIN": "Login",
+      "SIGN_UP": "Sign up"
+    },
+    "USER_MENU": {
+      "USER_AREA": "User Area",
+      "DASHBOARD": "Admin Dashboard",
+      "PARTNER": "Partners Dashboard",
+      "COLLABORATOR": "Collaborators Dashboard",
+      "COORDINATOR": "Coordinators Dashboard",
+      "LANGUAGE": "Language",
+      "SIGN_OUT": "Sign Out"
+    }
+  },
+  "FOOTER": {
+    "JOIN_US": "JOIN US",
+    "COORDINATORS": "Coordinators",
+    "COLLABORATORS": "Collaborators",
+    "PARTNERSHIPS": "Partnerships",
+    "LEGAL": "LEGAL",
+    "PRIVACY_POLICY": "Privacy Policy",
+    "TERMS_OF_USE": "Terms of Use",
+    "FOLLOW_US": "FOLLOW US",
+    "QUICK_CONTACT": "QUICK CONTACT",
+    "ADDRESS_LABEL": "Address:",
+    "ADDRESS": "8157 Prince Sultan Road Al-Muhammadiyah District Jeddah 23623, Saudi Arabia",
+    "PHONE": "Phone:",
+    "WHATSAPP": "WhatsApp:",
+    "EMAIL": "Email:",
+    "REFUND_POLICY": "Refund Policy"
+  },
+  "SOCIAL_MEDIA": {
+    "FACEBOOK": "Facebook",
+    "TWITTER": "Twitter",
+    "INSTAGRAM": "Instagram",
+    "YOUTUBE": "Youtube",
+    "WHATSAPP": "WhatsApp",
+    "TIKTOK": "TikTok",
+    "SNAPCHAT": "Snapchat"
+  },
+  "HOME_PAGE": {
+    "HEADING_SECTION": {
+      "TITLE_PREFIX": "By you believing in your talent, We'll build your",
+      "TITLE": "First Launch",
+      "TITLE_SUFFIX": "together.",
+      "CALL_TO_ACTION_LINK": "Check out our services"
+    },
+    "ABOUT_SECTION": {
+      "TITLE_PREFIX": "We are",
+      "TITLE": "First Launch",
+      "TITLE_SUFFIX": "Lit. Co. for Artistic",
+      "PARAGRAPH_0": "It is a Saudi company registered with Commercial Registry No. 4030381541 and licensed by the General Entertainment Authority to support and develop artistic and entertainment talents with license No. 2012070106, as its work depends on specialized artistic production in the audiovisual field, as it’s managing all production processes form its operational office that is located at EMAAR Square “Jeddah Gate”.",
+      "PARAGRAPH_1": "The company provides modern solutions in the artistic and cinematic field, relying on designing its services on the talents of customers by offering competitive prices in the artistic and modelling, the first launch platform is a coming revolution in the packages of modern media classification, which will be a quantum leap in the privatization of the productive field, through the automation of services Based on the needs and desires based on the talents of customers while providing easy and accessible solutions for the customer in the field of artistic talent and entertainment in the Kingdom of Saudi Arabia."
+    }
+  },
+  "SERVICE_PAGE": {
+    "DOWNLOAD_PORTFOLIO": "Download Service Portfolio",
+    "ORDER_SECTION": {
+      "TITLE": "How can I get started?",
+      "CALL_TO_ACTION_LINK": "Get your First Launch now"
+    },
+    "SERVICE_NOT_FOUND": "Service Not Found!"
+  },
+  "ABOUT_PAGE": {
+    "TITLE_PREFIX": "We are",
+    "TITLE": "First Launch",
+    "TITLE_SUFFIX": "Lit. Co. for Artistic",
+    "PARAGRAPH_0": "It is a Saudi company registered with Commercial Registry No. 4030381541 and licensed by the General Entertainment Authority to support and develop artistic and entertainment talents with license No. 2012070106, as its work depends on specialized artistic production in the audiovisual field, as it’s managing all production processes form its operational office that is located at EMAAR Square “Jeddah Gate”.",
+    "PARAGRAPH_1": "The company provides modern solutions in the artistic and cinematic field, relying on designing its services on the talents of customers by offering competitive prices in the artistic and modelling, the first launch platform is a coming revolution in the packages of modern media classification, which will be a quantum leap in the privatization of the productive field, through the automation of services Based on the needs and desires based on the talents of customers while providing easy and accessible solutions for the customer in the field of artistic talent and entertainment in the Kingdom of Saudi Arabia."
+  },
+  "CONTACT_PAGE": {
+    "TITLE": "Contact us directly",
+    "PARAGRAPH_0": "We believe in your talent, and together we are making your first start, and your needs may be different",
+    "PARAGRAPH_1": "The direct communication service with us through all available channels will bring us closer to understanding your interests, needs and the level that you aspire to, through our experience in the artistic and entertainment production market; We have designed easy and flexible service packages for all needs and talents, so that we provide professional solutions and services at competitive prices and suitable for all groups with distinctive service packages that suit all the needs of our customers.",
+    "FORM_title": "Drop us a line"
+  },
+  "LOGIN_PAGE": {
+    "TITLE": "Login",
+    "FORGOTTEN_PASSWORD": "Forgotten password?",
+    "SUBMIT_BUTTON": "Login",
+    "BACK_TO_HOME": "Back to home"
+  },
+  "SIGN_UP_PAGE": {
+    "TITLE": "Sign up",
+    "HAVE_AN_ACCOUNT": "Have an account already?",
+    "HAVE_AN_ACCOUNT_LOGIN": "Login",
+    "SUBMIT_BUTTON": "Signup",
+    "BACK_TO_HOME": "Back to home"
+  },
+  "RESET_PASSWORD_PAGE": {
+    "TITLE": "Password Reset",
+    "BACK_TO_LOGIN": "Back to Login",
+    "SUBMIT_BUTTON": "Send reset code",
+    "BACK_TO_HOME": "Back to home"
+  },
+  "CONFIRM_SIGNUP_PAGE": {
+    "TITLE": "Account Confirmation",
+    "SUBTITLE": "We sent you the confirmation code by email, please check out your inbox!",
+    "LOGIN_WITH_OTHER_ACCOUNT": "Login with other account",
+    "BACK_TO_HOME": "Back to home"
+  },
+  "SERVICE_ORDER_PAGE": {
+    "TITLE": "Order Application",
+    "PERSONAL_INFORMATION": "Personal Information",
+    "BACKGROUND": "Background",
+    "SOCIAL_MEDIA_ACCOUNTS": "Social Media Accounts",
+    "EXPERIENCE_AND_TRIALS": "Experience & Trials",
+    "RESUME": "Resume",
+    "PROFESSIONAL_PICTURE": "Professional Picture",
+    "INTERESTS_AND_CATEGORY": "Interests & Category",
+    "YOUR_INTERESTS_AND_FIELD": "Your Interests & Field",
+    "MY_DIMENSIONS_AS_FOLLOWS": "My dimensions as follows",
+    "VOICE_CLASSIFICATION": "Voice Classification",
+    "UPLOAD_RESUME": "Upload your resume",
+    "UPLOAD_PICTURE": "Upload your professional picture",
+    "CHECK_ALL_APPLIES": "(Check all that applies)",
+    "OPTIONAL": "(optional)",
+    "IF_KNOWN": "(if known)",
+    "RANGE": "Range",
+    "TONE_QUALITY": "Tone Quality",
+    "INTONATION": "Intonation",
+    "SIGHT_SINGING": "Sight-Singing",
+    "MELODY_MEMORIZATION": "Melody Memorization",
+    "CONFIDENCE": "Confidence",
+    "OVERALL_RATING": "Overall Rating",
+    "PRIVACY_POLICY_AGREEMENT_MESSAGE": "* All your information and data will be confidential and protected under our privacy policy & terms of use agreement.",
+    "PRIVACY_POLICY_AGREEMENT": "I have read the First Launch agreements and I agree on its privacy policy & terms of use. I understand that my application might not be accepted by First Launch Platform according to its criteria or priorities.",
+    "SUBMIT_BUTTON": "Submit Order",
+    "POETRY": "poetry",
+    "DRAMA": "drama",
+    "SCIENCE_FICTION": "science fiction",
+    "SONG_LYRICS": "song lyrics",
+    "MYSTERY": "mystery",
+    "NONFICTION": "nonfiction",
+    "FANTASY": "fantasy",
+    "BIOGRAPHY": "biography",
+    "FICTION": "fiction",
+    "WRITING_INTERESTS_AND_CATEGORY": "Writing interests & category",
+    "COMMERCIALS_ACTING": "Commercials Acting",
+    "THEATRE_ACTING": "Theatre Acting",
+    "EXTRA_BACKGROUND_ACTING": "Extra/Background Acting",
+    "COMEDY": "Comedy",
+    "VOICE_OVER_ACTING": "Voice Over Acting",
+    "CLASSIC": "Classic",
+    "OTHERS": "Others",
+    "FILM_AND_TV_ACTING": "Film & TV (Screen) Acting"
+  },
+  "PRIVACY_PAGE": {
+    "TITLE": "Privacy policy",
+    "PARAGRAPH": "The privacy and confidentiality of the information described below is part of the terms of use of the website, if you choose to provide your information, we only use it to fulfill your request for information or services in accordance with what is stated in these policies, and by using the first-start platform, you agree to this privacy policy and confidentiality of information. Visitors to the site and the beneficiaries of its services must constantly review the terms and principles of privacy and confidentiality of information to know any updates made to them, noting that the site’s management is not required to announce any updates made to those terms and principles, and your use of the site means that you are aware of and agree to those terms and principles and what is done on them From constant adjustments. Intilaaqah al-Oula is not responsible under any circumstances",
+    "TITLE_0": "Security of personal information",
+    "PARAGRAPH_0_0": "The privacy and confidentiality of information document has been prepared to help visitors, customers, and users understand the nature of the data that is collected from them when visiting the site and how to deal with it. Misuse, modification and unauthorized disclosure, and among the most important measures in place in the First Inception platform to protect the visitor's personal information: Strict procedures and measures to protect the security of information and the technology that we use to prevent fraud and unauthorized access to our systems. Regular and periodic update of protection procedures and controls That meet or exceed the standard criteria. Our employees are qualified and trained to respect the confidentiality of the personal information of our visitors.",
+    "TITLE_1": "Collecting personal information",
+    "PARAGRAPH_1_1": "Once the user visits the platform site, the site’s server records the user’s IP address, the date and time of the visit, and the URL of any website from which you are referred to the first launch platform site.",
+    "PARAGRAPH_1_2": "Most websites, as soon as they are visited, place a small file on the visitor’s hard drive (the browser). This file is called “cookies”, and cookies are text files, and these text files contain information that allows the site that deposited them to retrieve them When needed during the user's next visit to the site, and from this information saved.",
+    "PARAGRAPH_1_3": "Remember username and password.",
+    "PARAGRAPH_1_4": "Save page settings, if available on the portal.",
+    "PARAGRAPH_1_5": "The browser (visitor) may not have to enter the password on every visit, as the site’s system will be able to discover it through cookies, or it may prevent the user from repeating the voting process if he has already voted and so on… On this basis, the site will use the existing information In cookies for technical purposes of their own, when visited more than once, and the site can change the information contained in the cookies files or add new information whenever you visit the first launch platform.",
+    "PARAGRAPH_1_6": "If you use a direct application or send us an email via the website providing us with personal data, we may share the necessary data with other authorities or departments, in order to serve you more effectively, and we will not share your personal data with non-governmental entities unless they are from the authorized authorities It has from the competent authorities to perform specific government services. By submitting your data and personal information through the website, you fully agree to the storage, processing and use of that data by the Saudi authorities. We reserve the right at all times to disclose any information to the competent authorities, when it is necessary to comply with any law, regulation or governmental request.",
+    "PARAGRAPH_1_7": "You are solely responsible for the completeness, correctness and truthfulness of the data that you send through this website.",
+    "TITLE_2": "Protect your privacy",
+    "PARAGRAPH_2_0": "Do not give confidential information over the phone or the Internet unless you know the identity of the person or party receiving the information. Use a safe browser when you complete transactions over the Internet while closing unused applications on the network, and make sure that the virus protection program is always updated. For any inquiries or opinions about privacy principles, you can contact the site’s administration via the contact form on the Contact Us page. To preserve your personal data, electronic storage and personal data sent using appropriate security technologies are secured. This site may contain electronic links to websites or portals that may be used. Ways to protect information and its privacy differ from the methods used by us, and we are not responsible for the contents, methods and privacy of these other sites, and we advise you to refer to the privacy notices of those sites.",
+    "TITLE_3": "Send email messages",
+    "PARAGRAPH_3_0": "When you inquire or request information about a specific service or in the event that you give additional information using any of the means of communication with the first start-up platform, whether electronic or non-electronic, such as requesting inquiries on our website, we will use your e-mail address to respond to your inquiries, as well as from It is possible to save your mail address, message, and our response to it for quality control purposes, and we may also do so for legal and regulatory purposes."
+  },
+  "TERMS_PAGE": {
+    "PARAGRAPH": "This website of the first launch platform (referred to here as “the first launch site” or “the site” or “the portal”) is available for your personal use, and your entry and use of this portal is subject to these terms and conditions of use and the laws of the Kingdom of Saudi Arabia. Likewise, your access and entry to this portal constitutes an unconditional agreement to the terms and conditions of use, whether you are a registered user or not, and this approval is effective from the date of your first use of this portal. As is clear from the platform's vision and mission, one of its most important goals is to provide services Cost-effective artistic and production services to clients based on their artistic, musical, writing and craftsmanship talents. The use of the site includes a number of terms and conditions that are subject to continuous updates and changes as needed, and any amendment or update to any of these terms and conditions becomes effective upon approval by the portal administration. Which requires you to constantly review the terms of use and principles of disclaimer of liability to see any updates to them; Your continued use of this site means that you are aware of and fully accept any amendment made to the terms and conditions of their use. Note that these terms and conditions include property rights, and the platform management is not required to announce any updates made to these terms.",
+    "TITLE": "Restrictions on use",
+    "PARAGRAPH_0": "By using the Al-Intilaaqah platform website, you acknowledge refraining from the following: Provide or download files that contain software, materials, data, or other information that are not owned or licensed to you. Use this portal in any way to send any commercial e-mail that is not subject to agreements with the company First Art or Unwanted or any misuse of this kind of the company’s platform. Providing or downloading files on this platform that contain viruses or corrupted data. Publishing, advertising, distributing or circulating materials or information that contain defamation or violation of laws or pornographic material or Obscene or contrary to Islamic teachings or public morals or any illegal materials or information through the company's platform. Or a service that makes us in violation of any law or system applied in any field. Use any method, program, or procedure to intercept or attempt to intercept the correct operation of the company's platform. Take any action that imposes an unreasonable, large or heavy load. Not suitable on the infrastructure of the decoy platform.",
+    "TITLE_1": "Links from the first launch site",
+    "PARAGRAPH_1": "Communication links for other portals and / or websites are provided for the purpose of facilitating the visitor and the customer, and we are not responsible for the content or credibility of the portals and / or the sites to which we link and we do not endorse their contents, thus using any of these links to reach those sites or The portals are entirely at your own risk. As we aim to replace the broken electronic links - which do not work - to other websites, and since we do not have control or control over those links; We do not guarantee in any way that these links will always function.",
+    "TITLE_2": "Antivirus protection",
+    "PARAGRAPH_2": "We make every effort to check and test the contents of this platform at all stages of production, and we recommend that you always run an anti-virus program on all materials that are downloaded from the Internet. We are not responsible for any loss, interruption, or damage to your data, the computer, or any device used for your browsing, which may occur during connection to this platform or when using material received from this platform.",
+    "TITLE_3": "Waiver of claims",
+    "PARAGRAPH_3": "The first launch platform website, services, information, materials, and functions available on it or that can be accessed through the platform are provided for your personal use 'as is' and 'as available' without any endorsement, promises or guarantees of any kind. We cannot guarantee or be held responsible for any interruptions, errors or abuses that may arise from the use of this platform or its contents or any site linked to it - whether with our knowledge or without our knowledge, that any communications or information that the user may send through this site He shall not have the right to its ownership or the right to guarantee its confidentiality, and any use or interactive use included in this platform does not guarantee or is not intended to guarantee to the user any rights, licenses, or any privileges of any kind. Also, the waiver of the first launch platform for any right available to it and specified in these terms in one of the places or events does not mean in any way an automatic and permanent waiver of any rights in other places and events.",
+    "TITLE_4": "Liability limits",
+    "PARAGRAPH_4": "The electronic services provided by the Al-Intilaaqah platform website via the Internet and obtaining information about the various services are provided only to facilitate manual procedures, and with this you acknowledge your full knowledge that communications over the Internet may be subject to interference or interception by others, and that the site does not replace the information available through the official authorities And that requests and administrative procedures can be taken directly before the competent authorities. Accordingly, resorting to this site remains at your own risk, and we are in no way responsible for any loss or damage of any kind that you may face due to your use or your visit to the site or your reliance on any statement, opinion, or advertisement on the site or what may result. For any delay in operation, connection failure, Internet access problems, equipment or software malfunctions, behavior or ideas of anyone accessing this platform. Thus you hereby acknowledge and agree that your exclusive and only means to treat any damage or loss that may occur as a result of your entry or use of this site is to refrain from using it or entering it or not to continue doing so.",
+    "TITLE_5": "Compensation",
+    "PARAGRAPH_5": "With this you acknowledge that no action has been taken against the First Intilaaqah platform or any of its departments, compensation and insurance from liability, as well as any entities, employees or agents who are responsible for managing, maintaining, updating or providing the services of the First Intilaaqah platform, and that of all the obligations and responsibilities that may occur in relation Relates to any claim arising from any breach on your part of the terms and conditions of use or any of the applicable laws, whether in the Kingdom of Saudi Arabia or the place in which you reside.",
+    "TITLE_6": "Termination of Use",
+    "PARAGRAPH_6": "We may, according to our absolute discretion, terminate, restrict or suspend your right to access and use the site without notice and for any reason, including violation of the terms and conditions of use, or any other behavior that we may consider, at our sole discretion, to be unlawful or harmful to others, and in the event of termination, it will not be authorized You may enter this site.",
+    "TITLE_7": "Property rights",
+    "PARAGRAPH_7": "This site is supervised by the Information Technology Department of the First Intilaaqah Art Company, which is a department of the First Intilaaqah platform in the Kingdom of Saudi Arabia, and all materials available on this site, including graphic images of information and software (contents) are protected by copyright, trademarks and other forms of property rights. It is not permissible in any way to sell, license, rent, modify, copy, reproduce, reprint, upload, advertise, transmit, distribute, display publicly, edit or create works derived from any materials or content from this site for the public or for commercial purposes Without obtaining the prior written approval of the First Intilaaqah platform in the Kingdom of Saudi Arabia. It is strictly prohibited to modify any of the contents of the site. Also, the graphics and images on this site are protected by copyright, and it is not permissible to reproduce or exploit them in any way without the prior written consent of the First Intilaaqah platform in the Kingdom of Saudi Arabia.",
+    "TITLE_8": "Judicial reference",
+    "PARAGRAPH_8": "You hereby agree to submit exclusively to the judicial authorities in the Kingdom of Saudi Arabia with regard to all claims and disputes that arise from your use of this site, noting that the Arabic language will be the official language used to resolve any disputes arising from your use of the site or any of its contents.",
+    "TITLE_9": "General terms and conditions",
+    "PARAGRAPH_9": "All the material and information available on the site aims to facilitate the procedures for displaying, reserving, buying and following up services. The Arabic language is the primary language for using the site and making use of all the materials published on it, and the translation of any of these materials aims to provide an added service, and therefore the translation provided is not relied upon to interpret Any dispute about the content on the site. The site administration has set a number of standards and restrictions for the use of all electronic participation channels, in order to ensure the highest desired benefit from the principle of electronic participation, and your use of these channels is a permanent agreement with the standards and restrictions for their use. The first launch platform has the full right to delete or not publish any comments or posts by site users that the site management deems inappropriate. You can view all the standards and restrictions of using electronic participation channels on this page. In the event that you have any inquiries or opinions about the terms of privacy and disclaimers, you can contact the administration of the First Inception platform via the contact form on the Contact Us page.",
+    "LIST_ITEM_1": "All credit/debit cards details and personally identifiable information will NOT be stored, sold, shared, rented or leased to any third parties",
+    "LIST_ITEM_2": "Saudi Arabia is our country of domicile",
+    "LIST_ITEM_3": "Website will NOT deal or provide any services or products to any of OFAC (Office of Foreign Assets Control) sanctions countries in accordance with the law of Saudi Arabia",
+    "LIST_ITEM_4": "We accept payments online using Visa and MasterCard credit/debit card in SAR.",
+    "LIST_ITEM_5": "Refunds will be done only through the Original Mode of Payment",
+    "LIST_ITEM_6": "Any dispute or claim arising out of or in connection with this website shall be governed and construed in accordance with the laws of Saudi Arabia."
+  },
+  "REFUND_POLICY_PAGE": {
+    "TITLE": "Refund of paid money shipped through the First Launch platform",
+    "PARAGRAPH_0": "The balance is returned by the project owner opening a technical support ticket or sending an email asking for his money back before starting the project and finally approving it.",
+    "LIST_TITLE": "The return process is subject to several conditions, including:",
+    "LIST_ITEM_0": "Terms of the payment method (PayPal and credit cards), for example, if the payment method does not provide the option to return the amount, we cannot do so from the Intilaaqah platform.",
+    "LIST_ITEM_1": "If the payment method provides the return within a specific period, then we are obligated to this period, which ranges from 7 to 14 working day, so we ask you, dear customer, to confirm by reading the terms of the payment method you use before paying and then follow up with the support team at the first launch platform.",
+    "LIST_ITEM_2": "The return is done exclusively to the payment method that was used as we carry out a refund process for the sums to be recovered according to the terms and conditions related to the final approval of the work, where the customer can recover the full amount before the final approval of the project by him, and the refund process is",
+    "LIST_ITEM_2_BOLDER": "subject to the amount of effort accomplished in the work plan and the completion of a draft The project, which does not exceed 10 to 20 percent of the value of the package or service and its requirements."
+  },
+  "COORDINATORS_FORM_PAGE": {
+    "TITLE": "Coordinators Application",
+    "ACCOUNT_INFO": "Account Information"
+  },
+  "COLLABORATORS_FORM_PAGE": {
+    "TITLE": "Collaborators Application",
+    "ACCOUNT_INFO": "Account Information"
+  },
+  "PARTNERSHIP_FORM_PAGE": {
+    "TITLE": "I'm an:",
+    "FORM_TITLE": "Partnership Application",
+    "INDIVIDUAL": "Individual",
+    "ORGANIZATION": "Organization",
+    "ACCOUNT_INFO": "Account Information"
+  },
+  "FORM_LABELS": {
+    "EMAIL": "Email",
+    "NAME": "Name",
+    "MESSAGE": "Your Message",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "CONFIRMATION_CODE": "Confirmation Code",
+    "SUBMIT": "Submit",
+    "DATE_OF_BIRTH": "Date of Birth",
+    "AGE": "Age",
+    "PHONE_NUMBER": "Phone number",
+    "NATIONALITY": "Nationality",
+    "ADDRESS": "Address",
+    "CITY_ZIP_CODE": "City/Zip Code",
+    "BACKGROUND": "A quick brief about your background",
+    "EXPERIENCE_AND_TRIALS": "A quick brief about your experience & trials",
+    "INTERESTS_AND_FIELD": "Your Interests & Field",
+    "INSTRUMENTS_YOU_PLAY": "Which instrument/s you play",
+    "HOW_LONG_YOU_PLAY": "For how long you play",
+    "GENDER": "Gender",
+    "HEIGHT": "Height",
+    "WEIGHT": "Weight",
+    "BUST_CHEST": "Bust/Chest",
+    "WAIST": "Waist",
+    "INSEAM_OUTSEAM": "Inseam/Outseam",
+    "DRESS_SUIT_SIZE": "Dress/ suit size",
+    "PANTS_SIZE": "Pants size",
+    "SHOE_SIZE": "Shoe size",
+    "MALE": "Male",
+    "FEMALE": "Female",
+    "ROLE": "Role",
+    "CARD_HOLDER": "Name on Card",
+    "CARD_NUMBER": "Card Number",
+    "CVV": "Cvv",
+    "EXP_YEAR": "Expiry Year",
+    "EXP_MONTH": "Expiry Month"
+  },
+  "FORM_VALIDATION": {
+    "EMAIL_REQUIRED": "Email is required!",
+    "EMAIL_INVALID": "Email is invalid!",
+    "NAME_REQUIRED": "Name is required!",
+    "NAME_MIN_LENGTH": "Name is too short!",
+    "MESSAGE_REQUIRED": "Message is required!",
+    "MESSAGE_MIN_LENGTH": "Message is too short!",
+    "MESSAGE_MAX_LENGTH": "Message is too long!"
+  },
+  "TALENT_SECTION": {
+    "TITLE": "Talent Track"
+  },
+  "SERVICES_SECTION": {
+    "TITLE": "Our Services"
+  },
+  "SERVICES": {
+    "WRITING_TALENT": {
+      "TITLE_PREFIX": "",
+      "TITLE": "Writing talent",
+      "SLOGAN": "From expressive writing to works of art",
+      "PORTFOLIO_FILE": "assets/data/services-en/writing-talent-service-english.pdf",
+      "CONTENT": {
+        "PARAGRAPH_0": "Many write, but few transform their writings into works of art that touch others.",
+        "PARAGRAPH_1": "If you are looking to translate words into a professional work of art, we help you implement a distinctive entertaining lyrical work, and we are working to raise its professionalism and standards to increase its spreadability and success in line with your aspirations.",
+        "PARAGRAPH_2": "We have provided you with a specialized team that translates your writings into lyrical works by paying attention to the appropriate melody, appropriate musical distribution, and a comprehensive artistic vision to work professionally, by seeking help from those with previous experience and successes in addition to high-quality technical advice to help you create the success that you aspire to."
+      },
+      "ORDER_STEPS": {
+        "STEP_0": "Choosing the package",
+        "STEP_1": "Request for service",
+        "STEP_2": "Full coordination of technical work within 5-15 working days",
+        "STEP_3": "Receive the initial copy of the work within a fixed date within 20 working days",
+        "STEP_4": "Final review",
+        "STEP_5": "Final receipt of the artwork"
+      }
+    },
+    "VOICE_TALENT": {
+      "TITLE_PREFIX": "",
+      "TITLE": "Voice talent",
+      "SLOGAN": "A distinctive sound that reaches everyone",
+      "PORTFOLIO_FILE": "assets/data/services-en/voice-talent-service-english.pdf",
+      "CONTENT": {
+        "PARAGRAPH_0": "We understand that the talent for a beautiful voice is rare, and your belief in your voice may stop at many challenges to enter the artistic community, and reach a distinguished audience. We understand well the needs of your voice to reach a distinctive artwork that may require a lot of time, effort and money. We have a shortcut to many steps that make your voice heard by everyone with ease and professionalism.",
+        "PARAGRAPH_1": "Prepare your voice and choose what suits you from our packages that highlight the capabilities of your voice and the level that matches your capabilities and start the journey of stardom in a professional way.",
+        "PARAGRAPH_2": "We have provided you with a specialized team that invests your voice in distinctive singing works by paying attention to the appropriate melody of your voice capabilities and the appropriate musical distribution of the artistic color with attention to the comprehensive technical vision of the work that guarantees you to show your best, and where you will have a business card to enter into all audio and video production companies and artistic studios Through a video accompanying the produced song, either with distinctive graphics or even with a miniature video clip that is characterized by a simple and high-quality modern touch with filming models and actors on demand, coordination with them is made to appear in the most complete way through which any composer or producer can judge your talent with the appreciation and respect you deserve."
+      },
+      "ORDER_STEPS": {
+        "STEP_0": "Choosing the package",
+        "STEP_1": "Request for service",
+        "STEP_2": "Complete coordination of lyrical work and artistic vision during 15 working days for a simple lyrical work - 45 days for a song with a full band",
+        "STEP_3": "Attendance to the recording studio at a fixed date to be determined according to what suits the customer",
+        "STEP_4": "Receive the initial copy for work within a fixed date after registration within 20 days",
+        "STEP_5": "Final review",
+        "STEP_6": "Final receipt of the artwork"
+      }
+    },
+    "ACTING_TALENT": {
+      "TITLE_PREFIX": "",
+      "TITLE": "Acting talent",
+      "SLOGAN": "From audition to job offers",
+      "PORTFOLIO_FILE": "assets/data/services-en/acting-talent-service-english.pdf",
+      "CONTENT": {
+        "PARAGRAPH_0": "Usually, performance experiences require a lot of time, arrangement and appointments, and there are many challenges facing talented people in this field, and the dependence of the opportunity to display talent on personal relationships, knowledge and the possibility of support from producers and directors.",
+        "PARAGRAPH_1": "This service provided will help you overcome challenges through a new way of displaying your talent, and you will be able to raise the level of professionalism in your performance, while providing support from specialists in your field of representation and technical style appropriate to your abilities, and help you highlight your best talents that are not yet discovered,",
+        "PARAGRAPH_2": "In addition, you will have a business card to enter it for all production offices and international companies through a short video that shows your performance experience alone or even with participants and representatives on request. Coordination with them is made to appear in the most complete way through which any director or producer can judge your talent with the appreciation it deserves. And respect."
+      },
+      "ORDER_STEPS": {
+        "STEP_0": "Choosing the package",
+        "STEP_1": "Request for service",
+        "STEP_2": "Full coordination of technical work and performance experience within five working days",
+        "STEP_3": "Attending the photography site at a fixed date to be determined according to what suits the client",
+        "STEP_4": "Receive the initial copy for work within a fixed period of time after filming within 10 days",
+        "STEP_5": "Final review",
+        "STEP_6": "Final receipt of the artwork"
+      }
+    },
+    "MUSICAL_TALENT": {
+      "TITLE_PREFIX": "",
+      "TITLE": "Musical talent",
+      "SLOGAN": "Music that touches the senses",
+      "PORTFOLIO_FILE": "assets/data/services-en/musical-talent-service-english.pdf",
+      "CONTENT": {
+        "PARAGRAPH_0": "Through the service provided, we provide all the capabilities of professional audio recording to highlight your talent for playing the musical instrument you prefer, with the possibility of recording an artistic and expressive video in which the appropriate place is prepared for the atmosphere of the musical piece being played, in addition to providing experts and specialists in the musical instrument in which you excel to supervise Not to deviate from the musical notes or even direct you to the best technique to show your playing in the most beautiful feeling that you can communicate to those around you, which helps you extract the best of your musical capabilities for the audience, to create a highly professional musical audio experience for the senses.",
+        "PARAGRAPH_1": "So that you can use this to introduce your talent to be an entry gateway to the professional work through which producers, orchestras, and those looking to invest in your talent can get to know you distinctively."
+      },
+      "ORDER_STEPS": {
+        "STEP_0": "Choosing the package",
+        "STEP_1": "Request for service",
+        "STEP_2": "Full coordination of the technical work within five working days",
+        "STEP_3": "Attend the registration site with a fixed date to be determined according to what suits the customer",
+        "STEP_4": "Attending the filming site in the event that an accompanying video is requested according to the required package With a fixed date to be determined according to what suits the customer",
+        "STEP_5": "Receive the initial copy for work within a fixed date after filming within 20 working days",
+        "STEP_6": "Final review",
+        "STEP_7": "Final receipt of the artwork"
+      }
+    },
+    "PROFESSIONAL_MODELS": {
+      "TITLE_PREFIX": "",
+      "TITLE": "Professional Models",
+      "SLOGAN": "More professional appearance",
+      "PORTFOLIO_FILE": "assets/data/services-en/professional-model-talent-service-english.pdf",
+      "CONTENT": {
+        "PARAGRAPH_0": "We understand that what hinders your distinguished and professional appearance is the continuity of that, because whenever it appears constantly, the more advertising, marketing and production agencies compete with you to cooperate with your talent.",
+        "PARAGRAPH_1": "We have the reach and visibility you deserve; And that is through a specialized team that offers you high value at the right price; Where we arrange professional photography sessions with an artistic vision of holistic dimensions, more than just dealing with professional photographers, to appear in the most beautiful and strongest style that you can focus on.",
+        "PARAGRAPH_2": "And providing a short professional video service for the first time in the Arab world so that you appear in different filming sessions and public places with cinematic cameras that photograph you on the red carpet that you deserve to stand on, as this video helps you to show the most beautiful angles that highlight your beauty and your talent for show It matches your distinctive taste, which guarantees your continuous climb up the ladder of success and fame."
+      },
+      "ORDER_STEPS": {
+        "STEP_0": "Choosing the package",
+        "STEP_1": "Request for service",
+        "STEP_2": "Full coordination of artwork and photography sessions within 10 working days",
+        "STEP_3": "Attending the photography site at a fixed date to be determined according to what suits the client",
+        "STEP_4": "Receive the initial copy for work within a fixed appointment after filming within 5-10 days",
+        "STEP_5": "Final review",
+        "STEP_6": "Final receipt of the artwork"
+      }
+    },
+    "INFLUENCERS": {
+      "TITLE": "Influencers' services",
+      "SLOGAN": "A distinctive sound that reaches everyone",
+      "PORTFOLIO_FILE": "assets/data/services-en/influencers-service-english.pdf",
+      "CONTENT": {
+        "PARAGRAPH_0": "It's easy to get to the top, but tough to keep going.",
+        "PARAGRAPH_1": "You may need a work team that provides you with statistical and marketing advice based on interactive performance indicators through which you can appear professionally and contribute to increasing your impact. And that by helping you to work on the latest studies and effective modern ideas that are appropriate in customizing your digital media orientation in easier and more effective ways through knowing the needs based on the analysis of the content that you previously provided.",
+        "PARAGRAPH_2": "And areas of development and interest based on the scientific opinion specialized in your social field to make the direct impact and the strongest appearance."
+      },
+      "ORDER_STEPS": {
+        "STEP_0": "Choosing the package",
+        "STEP_1": "Request for service",
+        "STEP_2": "Carry out full study and analysis of the content presented on the social platform within 10 working days",
+        "STEP_3": "Presenting needs and areas of development according to social specialization in the paths of influence",
+        "STEP_4": "Attending the filming site in case of requesting the introductory video service With a fixed date to be determined according to what suits the customer",
+        "STEP_5": "Receive the initial copy for work within a fixed period of time after filming within 20 days",
+        "STEP_6": "Final review",
+        "STEP_7": "Final receipt of the artwork"
+      }
+    }
+  },
+  "PROFILE_PAGE": {
+    "UPDATE_PROFILE": "Update Profile",
+    "DELETE_USER": "Delete User"
+  },
+  "SHARE_WITH_FRIENDS": "Share this service with your friends",
+  "GIVE_US_SHOUT_OUT": "Give us a shout out",
+  "TEAM_SECTION": {
+    "TITLE": "Our Team",
+    "NAMES": {
+      "ABDULLAH_ALNASHRI": "Abdullah Mohammed - SAMT",
+      "ADEL_ZAKI": "Adel Zaki",
+      "AHMAD_QANDIL": "Ahmad Qandil",
+      "ELAF_SAAB": "Elaf Saab",
+      "FATMAH_ALAMOUDI": "Fatmah Alamoudi",
+      "HASSAN_BASRAWI": "Hassan Basrawi",
+      "HAYFA_HUSSAIN": "Hayfa Hussain",
+      "MAJED_ALDOSSARI": "Majed Aldossari",
+      "MARAM": "Maram Qadi",
+      "MARWAN_ALSHEHRI": "Marwan Alshehri",
+      "NESREEN": "Nesreen",
+      "OSAMA_BUGIS": "Osama Bugis",
+      "RAFAL_QASSEM": "Rafal Qassem",
+      "RAWAN_ABDULLAH": "Rawan Abdullah",
+      "RAWAN_HUSSAIN": "Rawan Hussain",
+      "SALEH_KASHOGJI": "Saleh Kashogji",
+      "SHAHAD_BAJAAFAR": "Shahad Bajaafar",
+      "TURKAN_ALAYOUBI": "Turkan Alayoubi"
+    },
+    "TITLES": {
+      "COMPOSER": "Composer",
+      "DIRECTOR": "Director",
+      "ASSISTANT_DIRECTOR": "Assistant Director",
+      "SINGER_MODEL": "Singer & Model",
+      "PHOTOGRAPHER_VIDEO": "Photographer & Video",
+      "PHOTOGRAPHER": "Photographer & Video",
+      "MAKE_UP_ARTIST": "Make-up Artist",
+      "MODEL": "Model",
+      "MUSICIAN": "Musician",
+      "SINGER": "Singer",
+      "MUSICIAN_GUITARIST": "Musician & Guitarist",
+      "MUSICIAN_PIANIST": "Musician & Pianist",
+      "ACTOR_DANCE_INSTRUCTOR": "Actor & Dance Instructor"
+    }
+  }
+}

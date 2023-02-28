@@ -1,0 +1,70 @@
+// Include app colors.
+@import "styles/colors";
+
+// Include Bootstrap.
+@import "~bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: "Tajawal";
+  src: url("assets/fonts/tajawal-regular.ttf") format("truetype");
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Tajawal", Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: scroll;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+footer .social-media-link .mat-icon svg {
+  vertical-align: unset;
+}
+
+button:focus,
+a:focus,
+input:focus {
+  outline: none;
+}
+
+.portfolio-item-card .image-selected {
+  position: fixed;
+  width: 90%;
+  left: 5%;
+  top: 5%;
+  z-index: 99;
+}
+
+.portfolio-item-card img {
+  transition: all 200ms ease-in-out;
+}
+
+.border-light {
+  border-color: rgba(155, 155, 155, 0.3) !important;
+}
+
+mat-form-field.without-subscript {
+  .mat-form-field-wrapper {
+    padding: 0;
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

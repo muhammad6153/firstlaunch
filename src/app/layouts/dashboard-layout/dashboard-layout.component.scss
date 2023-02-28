@@ -1,0 +1,22 @@
+.mat-drawer-container {
+  min-height: 100vh;
+}
+
+.mat-drawer {
+  width: 13rem;
+}
+
+.mat-list-item {
+  text-decoration: none;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(155, 155, 155, 0.3);
+  }
+}
+
+.active {
+  background-color: rgba(155, 155, 155, 0.3);
+}

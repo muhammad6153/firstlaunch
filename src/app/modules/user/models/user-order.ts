@@ -1,0 +1,75 @@
+import type { Order } from "@/app/models/order";
+
+export class UserOrder {
+  public readonly id: number;
+  public readonly userId: number;
+  public readonly address?: string;
+  public readonly age?: number;
+  public readonly background: string;
+  public readonly cityOrZipcode?: string;
+  public readonly dateOfBirth?: string;
+  public readonly dimensions?: Order["dimensions"];
+  public readonly email?: string;
+  public readonly experienceAndTrials?: string;
+  public readonly facebook?: string;
+  public readonly howLongInstrumentsPlayed?: string;
+  public readonly instagram?: string;
+  public readonly instrumentsPlayed?: string;
+  public readonly interestsAndCategory?: Order["interestsAndCategory"];
+  public readonly interestsAndField?: string;
+  public readonly name?: string;
+  public readonly nationality?: string;
+  public readonly phoneNumber?: string;
+  public readonly picture?: string;
+  public readonly plan: string;
+  public readonly resume?: string;
+  public readonly service: string;
+  public readonly snapchat?: string;
+  public readonly tiktok?: string;
+  public readonly twitter?: string;
+  public readonly voiceClassification?: Order["voiceClassification"];
+  public readonly writingInterestsAndCategory?: Order["writingInterestsAndCategory"];
+  public readonly youtube?: string;
+  public readonly currentStateIndicator: number;
+  public readonly finalPackageLink?: string;
+  public readonly creationDate: Date;
+  public readonly publicId: string;
+  public readonly associations: number[];
+
+  constructor(order: Partial<UserOrder>) {
+    this.id = order.id || 0;
+    this.userId = order.userId || 0;
+    this.address = order.address;
+    this.age = order.age;
+    this.background = order.background || "";
+    this.cityOrZipcode = order.cityOrZipcode;
+    this.dateOfBirth = order.dateOfBirth;
+    this.dimensions = order.dimensions;
+    this.email = order.email;
+    this.experienceAndTrials = order.experienceAndTrials;
+    this.facebook = order.facebook;
+    this.howLongInstrumentsPlayed = order.howLongInstrumentsPlayed;
+    this.instagram = order.instagram;
+    this.instrumentsPlayed = order.instrumentsPlayed;
+    this.interestsAndCategory = order.interestsAndCategory;
+    this.interestsAndField = order.interestsAndField;
+    this.name = order.name;
+    this.nationality = order.nationality;
+    this.phoneNumber = order.phoneNumber;
+    this.picture = order.picture;
+    this.plan = order.plan || "";
+    this.resume = order.resume;
+    this.service = order.service || "";
+    this.snapchat = order.snapchat;
+    this.tiktok = order.tiktok;
+    this.twitter = order.twitter;
+    this.voiceClassification = order.voiceClassification;
+    this.writingInterestsAndCategory = order.writingInterestsAndCategory;
+    this.youtube = order.youtube;
+    this.currentStateIndicator = order.currentStateIndicator || 1;
+    this.finalPackageLink = order.finalPackageLink;
+    this.creationDate = new Date(order.creationDate || "");
+    this.publicId = order.publicId || "";
+    this.associations = order.associations || [];
+  }
+}

@@ -1,0 +1,178 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center px-2">
+    <div class="col-12">
+      <div class="d-flex align-items-center justify-content-between">
+        <div>
+          <h1 class="my-0">User profile</h1>
+        </div>
+        <div>
+          <button
+            mat-icon-button
+            matTooltip="Reload page data"
+            (click)="fetchData()"
+            [disabled]="loading"
+          >
+            <mat-icon [class.spinner]="loading">sync</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <div class="col-12 my-2">
+      <div class="d-flex flex-wrap flex-lg-row-reverse">
+        <div class="col-12 col-md-auto text-center mb-5">
+          <h4>Profile picture</h4>
+          <img
+            width="200"
+            height="200"
+            class="d-block rounded-circle border border-light mx-auto bg-dark shadow profile-picture"
+            [id]="profilePictureSource || user?.profilePicture"
+            [src]="profilePictureSource || user?.profilePicture"
+            [alt]="user?.name"
+          />
+          <input
+            class="d-none"
+            type="file"
+            accept="image/*"
+            (change)="handleProfilePictureUpdate($event)"
+            #pictureInput
+          />
+          <button
+            mat-raised-button
+            color="primary"
+            class="mx-auto my-3"
+            (click)="pictureInput.click()"
+          >
+            Edit
+          </button>
+        </div>
+        <div class="col-12 col-md-auto flex-grow-1 mb-5">
+          <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+            <div
+              class="d-flex flex-column align-items-center align-items-md-start"
+            >
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>{{ "FORM_LABELS.NAME" | translate }}</mat-label>
+                  <input matInput formControlName="name" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>{{ "FORM_LABELS.EMAIL" | translate }}</mat-label>
+                  <input matInput formControlName="email" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>{{ "FORM_LABELS.ADDRESS" | translate }}</mat-label>
+                  <input matInput formControlName="address" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>
+                    {{ "FORM_LABELS.NATIONALITY" | translate }}
+                  </mat-label>
+                  <input matInput formControlName="nationality" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>
+                    {{ "FORM_LABELS.DATE_OF_BIRTH" | translate }}
+                  </mat-label>
+                  <input
+                    matInput
+                    [min]="minDataOfBirth"
+                    [max]="maxDataOfBirth"
+                    [matDatepicker]="picker"
+                    formControlName="dateOfBirth"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>
+                    {{ "FORM_LABELS.PHONE_NUMBER" | translate }}
+                  </mat-label>
+                  <input matInput formControlName="phoneNumber" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>
+                    {{ "FORM_LABELS.CITY_ZIP_CODE" | translate }}
+                  </mat-label>
+                  <input matInput formControlName="cityOrZipcode" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>{{ "FORM_LABELS.AGE" | translate }}</mat-label>
+                  <input matInput formControlName="age" />
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>{{ "FORM_LABELS.ROLE" | translate }}</mat-label>
+                  <mat-select formControlName="role">
+                    <mat-option value="USER">User</mat-option>
+                    <mat-option value="ADMIN">Admin</mat-option>
+                    <mat-option value="PARTNER">Partner</mat-option>
+                    <mat-option value="COORDINATOR">Coordinator</mat-option>
+                    <mat-option value="COLLABORATOR">Collaborator</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12">
+                <button
+                  mat-raised-button
+                  type="submit"
+                  color="primary"
+                  class="py-1 mx-2"
+                  [disabled]="form.disabled || form.invalid || loading"
+                >
+                  <mat-spinner
+                    color="warn"
+                    class="d-inline-block"
+                    [diameter]="24"
+                    *ngIf="form.disabled || loading"
+                  ></mat-spinner>
+                  <span class="mx-2">
+                    {{ "PROFILE_PAGE.UPDATE_PROFILE" | translate }}
+                  </span>
+                </button>
+                <button
+                  mat-raised-button
+                  type="button"
+                  color="warn"
+                  class="py-1 mx-2"
+                  (click)="deleteUser()"
+                  [disabled]="form.disabled || loading"
+                >
+                  <mat-spinner
+                    color="warn"
+                    class="d-inline-block"
+                    [diameter]="24"
+                    *ngIf="form.disabled || loading"
+                  ></mat-spinner>
+                  <span class="mx-2">
+                    {{ "PROFILE_PAGE.DELETE_USER" | translate }}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

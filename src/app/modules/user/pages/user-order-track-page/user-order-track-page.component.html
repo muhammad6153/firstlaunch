@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="d-flex flex-column flex-wrap align-items-center">
+    <div class="col-12">
+      <h1 class="my-0">Track Order #{{ orderTrack?.orderId }}</h1>
+    </div>
+    <div class="col-12 my-2">
+      <mat-divider></mat-divider>
+    </div>
+    <ng-container *ngIf="loading; else loadingContainer">
+      <div class="col-12 my-2" *ngIf="loading">
+        <div class="d-flex align-items-center py-4">
+          <mat-spinner color="primary" diameter="45"></mat-spinner>
+          <span class="mx-3">Loading order track...</span>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loadingContainer>
+      <div class="col-12 my-2" *ngIf="!orderTrack; else orderContainer">
+        <div role="alert" class="alert alert-danger">
+          <h1 class="my-0">Order not found!</h1>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #orderContainer>
+      <div class="col-12 mt-2 mb-4">
+        <mat-card>
+          <mat-card-content>
+            <mat-list role="list">
+              <mat-list-item
+                role="listitem"
+                *ngFor="let step of steps; let idx = index"
+                [class.text-muted]="
+                  orderTrack && orderTrack.currentStateIndicator < idx
+                "
+              >
+                <mat-chip-list>
+                  <mat-chip
+                    color="primary"
+                    [selected]="
+                      orderTrack && orderTrack.currentStateIndicator >= idx
+                    "
+                  >
+                    {{ idx + 1 }}
+                  </mat-chip>
+                </mat-chip-list>
+                <span class="mx-3">{{ step | translate }}</span>
+              </mat-list-item>
+              <mat-list-item role="listitem" class="my-3">
+                <a
+                  mat-raised-button
+                  color="primary"
+                  [disabled]="!orderTrack?.finalPackageLink"
+                  [href]="orderTrack?.finalPackageLink || '/'"
+                  target="_blank"
+                >
+                  Download the final package
+                </a>
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col-12 my-2">
+        <div class="col-12">
+          <h1 class="my-0">Comments</h1>
+        </div>
+        <div class="col-12 my-2">
+          <mat-divider></mat-divider>
+        </div>
+        <div class="d-flex flex-column mb-4">
+          <app-comment-card
+            *ngFor="let comment of orderTrack?.comments || []"
+            [comment]="comment"
+          ></app-comment-card>
+        </div>
+
+        <app-text-editor
+          (newCommentEvent)="addComment($event)"
+        ></app-text-editor>
+      </div>
+    </ng-template>
+  </div>
+</div>

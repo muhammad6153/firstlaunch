@@ -1,0 +1,24 @@
+.content {
+  text-align: justify;
+}
+
+.step {
+  &:not(:last-child)::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+  }
+
+  .label {
+    border-radius: 30% 70% 48% 52% / 28% 30% 70% 72%;
+  }
+
+  $colors: #9f2d76, #67a7a1, #40316a, #f6bf24, #f78628, #a3a3a3, #9f2d76,
+    #67a7a1;
+
+  @for $index from 1 through 8 {
+    &:nth-child(#{$index}) .label {
+      background: nth($colors, $index);
+    }
+  }
+}

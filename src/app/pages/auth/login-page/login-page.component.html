@@ -1,0 +1,62 @@
+<div class="page-container vh-100">
+  <div class="d-flex justify-content-end align-items-center container h-100">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="mat-app-background-dark mat-elevation-z21 rounded p-5 mb-3">
+        <h1 class="mb-4">{{ "LOGIN_PAGE.TITLE" | translate }}</h1>
+        <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+          <p class="my-1">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>{{ "FORM_LABELS.EMAIL" | translate }}</mat-label>
+              <input matInput required formControlName="email" type="email" />
+              <mat-error *ngIf="email.invalid">
+                {{ getEmailError() }}
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p class="my-1">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>{{ "FORM_LABELS.PASSWORD" | translate }}</mat-label>
+              <input
+                matInput
+                required
+                formControlName="password"
+                type="password"
+              />
+              <mat-error *ngIf="password.invalid">
+                {{ getPasswordError() }}
+              </mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <a mat-button routerLink="/auth/reset-password" color="primary">
+              {{ "LOGIN_PAGE.FORGOTTEN_PASSWORD" | translate }}
+            </a>
+          </p>
+          <button
+            mat-raised-button
+            type="submit"
+            color="primary"
+            class="w-100 py-1"
+            [disabled]="form.disabled || form.invalid"
+          >
+            <mat-spinner
+              color="warn"
+              class="d-inline-block"
+              [diameter]="24"
+              *ngIf="form.disabled"
+            ></mat-spinner>
+            <span class="mx-2">
+              {{ "LOGIN_PAGE.SUBMIT_BUTTON" | translate }}
+            </span>
+          </button>
+        </form>
+      </div>
+      <a mat-button routerLink="/" class="text-light">
+        <mat-icon>west</mat-icon>
+        <span class="mx-2">
+          {{ "LOGIN_PAGE.BACK_TO_HOME" | translate }}
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

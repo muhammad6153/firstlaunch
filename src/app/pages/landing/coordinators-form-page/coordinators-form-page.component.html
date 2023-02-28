@@ -1,0 +1,479 @@
+<div class="page-container">
+  <div class="d-flex justify-content-center align-items-center container h-100">
+    <div class="col-12 col-md-8 col-lg-6 my-5">
+      <div class="mat-app-background-dark mat-elevation-z12 rounded p-5 mb-3">
+        <h1 class="mb-4 text-center">
+          {{ "COORDINATORS_FORM_PAGE.TITLE" | translate }}
+        </h1>
+        <form [formGroup]="form" (ngSubmit)="handleSubmit()">
+          <!-- Account Information -->
+          <div>{{ "COORDINATORS_FORM_PAGE.ACCOUNT_INFO" | translate }}</div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.NAME" | translate }}</mat-label>
+                <input matInput required formControlName="name" />
+                <mat-error
+                  *ngIf="
+                    form.get('name')?.invalid &&
+                    (form.get('name')?.dirty || form.get('name')?.touched) &&
+                    form.get('name')?.errors?.required
+                  "
+                >
+                  Name is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    form.get('name')?.invalid &&
+                    (form.get('name')?.dirty || form.get('name')?.touched) &&
+                    form.get('name')?.errors?.minlength
+                  "
+                >
+                  Name must be at least 2 characters long.
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    form.get('name')?.invalid &&
+                    (form.get('name')?.dirty || form.get('name')?.touched) &&
+                    form.get('name')?.errors?.maxlength
+                  "
+                >
+                  Name must be 32 characters long maximum.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.EMAIL" | translate }}</mat-label>
+                <input matInput required formControlName="email" />
+                <mat-error
+                  *ngIf="
+                    form.get('email')?.invalid &&
+                    (form.get('email')?.dirty || form.get('email')?.touched) &&
+                    form.get('email')?.errors?.required
+                  "
+                >
+                  Email is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    form.get('email')?.invalid &&
+                    (form.get('email')?.dirty || form.get('email')?.touched) &&
+                    form.get('email')?.errors?.email
+                  "
+                >
+                  Email is invalid.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.PASSWORD" | translate }}</mat-label>
+                <input
+                  matInput
+                  required
+                  formControlName="password"
+                  type="password"
+                />
+                <mat-error
+                  *ngIf="
+                    form.get('password')?.invalid &&
+                    (form.get('password')?.dirty ||
+                      form.get('password')?.touched) &&
+                    form.get('password')?.errors?.required
+                  "
+                >
+                  Password is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    form.get('password')?.invalid &&
+                    (form.get('password')?.dirty ||
+                      form.get('password')?.touched) &&
+                    form.get('password')?.errors?.minlength
+                  "
+                >
+                  Password must be at least 6 characters long.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.PHONE_NUMBER" | translate }}
+                </mat-label>
+                <input matInput required formControlName="phoneNumber" />
+                <mat-error
+                  *ngIf="
+                    form.get('phoneNumber')?.invalid &&
+                    (form.get('phoneNumber')?.dirty ||
+                      form.get('phoneNumber')?.touched) &&
+                    form.get('phoneNumber')?.errors?.required
+                  "
+                >
+                  Phone number is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.NATIONALITY" | translate }}
+                </mat-label>
+                <mat-select required formControlName="nationality">
+                  <mat-option
+                    *ngFor="let country of countries"
+                    [value]="country"
+                  >
+                    {{ country }}
+                  </mat-option>
+                </mat-select>
+                <mat-spinner
+                  matSuffix
+                  *ngIf="!countries.length"
+                  [diameter]="22"
+                ></mat-spinner>
+                <mat-error
+                  *ngIf="
+                    form.get('nationality')?.invalid &&
+                    (form.get('nationality')?.dirty ||
+                      form.get('nationality')?.touched) &&
+                    form.get('nationality')?.errors?.required
+                  "
+                >
+                  Nationality is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.DATE_OF_BIRTH" | translate }}
+                </mat-label>
+                <input
+                  matInput
+                  required
+                  [min]="minDataOfBirth"
+                  [max]="maxDataOfBirth"
+                  [matDatepicker]="picker"
+                  formControlName="dateOfBirth"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                  *ngIf="
+                    form.get('dateOfBirth')?.invalid &&
+                    (form.get('dateOfBirth')?.dirty ||
+                      form.get('dateOfBirth')?.touched) &&
+                    form.get('dateOfBirth')?.errors?.required
+                  "
+                >
+                  Date of Birth is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.ADDRESS" | translate }}</mat-label>
+                <input matInput required formControlName="address" />
+                <mat-error
+                  *ngIf="
+                    form.get('address')?.invalid &&
+                    (form.get('address')?.dirty ||
+                      form.get('address')?.touched) &&
+                    form.get('address')?.errors?.required
+                  "
+                >
+                  Address is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.CITY_ZIP_CODE" | translate }}
+                </mat-label>
+                <input matInput required formControlName="cityOrZipcode" />
+                <mat-error
+                  *ngIf="
+                    form.get('cityOrZipcode')?.invalid &&
+                    (form.get('cityOrZipcode')?.dirty ||
+                      form.get('cityOrZipcode')?.touched) &&
+                    form.get('cityOrZipcode')?.errors?.required
+                  "
+                >
+                  City or Zipcode is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "FORM_LABELS.AGE" | translate }}</mat-label>
+                <mat-select required formControlName="age">
+                  <mat-option *ngFor="let age of allowedAges()" [value]="age">
+                    {{ age }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="
+                    form.get('age')?.invalid &&
+                    (form.get('age')?.dirty || form.get('age')?.touched) &&
+                    form.get('age')?.errors?.required
+                  "
+                >
+                  Age is required.
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    form.get('age')?.invalid &&
+                    (form.get('age')?.dirty || form.get('age')?.touched) &&
+                    form.get('age')?.errors?.min
+                  "
+                >
+                  You must be 18+!
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    form.get('age')?.invalid &&
+                    (form.get('age')?.dirty || form.get('age')?.touched) &&
+                    form.get('age')?.errors?.max
+                  "
+                >
+                  You must be under 60 years old!
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Background -->
+          <div>{{ "SERVICE_ORDER_PAGE.BACKGROUND" | translate }}</div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "FORM_LABELS.BACKGROUND" | translate }}
+                </mat-label>
+                <textarea
+                  matInput
+                  rows="5"
+                  required
+                  formControlName="background"
+                ></textarea>
+                <mat-error
+                  *ngIf="
+                    form.get('background')?.invalid &&
+                    (form.get('background')?.dirty ||
+                      form.get('background')?.touched) &&
+                    form.get('background')?.errors?.required
+                  "
+                >
+                  Background is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Social Media Accounts -->
+          <div class="d-flex w-100">
+            <div>
+              {{ "SERVICE_ORDER_PAGE.SOCIAL_MEDIA_ACCOUNTS" | translate }}
+            </div>
+            <span class="small text-muted mx-1">
+              {{ "SERVICE_ORDER_PAGE.OPTIONAL" | translate }}
+            </span>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "SOCIAL_MEDIA.TWITTER" | translate }}</mat-label>
+                <input matInput formControlName="twitter" />
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "SOCIAL_MEDIA.YOUTUBE" | translate }}</mat-label>
+                <input matInput formControlName="youtube" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>
+                  {{ "SOCIAL_MEDIA.INSTAGRAM" | translate }}
+                </mat-label>
+                <input matInput formControlName="instagram" />
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "SOCIAL_MEDIA.TIKTOK" | translate }}</mat-label>
+                <input matInput formControlName="tiktok" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "SOCIAL_MEDIA.SNAPCHAT" | translate }}</mat-label>
+                <input matInput formControlName="snapchat" />
+              </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ "SOCIAL_MEDIA.FACEBOOK" | translate }}</mat-label>
+                <input matInput formControlName="facebook" />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Resume -->
+          <div class="d-flex w-100">
+            <div>{{ "SERVICE_ORDER_PAGE.RESUME" | translate }}</div>
+            <span class="small text-muted mx-1">*</span>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <mat-form-field
+                appearance="outline"
+                class="w-100 file-form-field"
+                (click)="resumeFileInput.click()"
+              >
+                <mat-label class="ms-1 file-form-field">
+                  {{ "SERVICE_ORDER_PAGE.UPLOAD_RESUME" | translate }}
+                </mat-label>
+                <mat-icon matPrefix>cloud_upload</mat-icon>
+                <input
+                  matInput
+                  readonly
+                  class="file-form-field"
+                  [value]="resumeFileInput.value"
+                />
+                <input
+                  #resumeFileInput
+                  type="file"
+                  accept="application/msword,application/pdf"
+                  class="d-none"
+                  (change)="handleResumeChange($event.target)"
+                />
+                <mat-error
+                  *ngIf="
+                    form.get('resume')?.invalid &&
+                    (form.get('resume')?.dirty ||
+                      form.get('resume')?.touched) &&
+                    form.get('resume')?.errors?.required
+                  "
+                >
+                  Resume is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!-- Professional Picture -->
+          <div class="d-flex w-100">
+            <div>
+              {{ "SERVICE_ORDER_PAGE.PROFESSIONAL_PICTURE" | translate }}
+            </div>
+            <span class="small text-muted mx-1">*</span>
+          </div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <mat-form-field
+                appearance="outline"
+                class="w-100 file-form-field"
+                (click)="pictureFileInput.click()"
+              >
+                <mat-label class="ms-1 file-form-field">
+                  {{ "SERVICE_ORDER_PAGE.UPLOAD_PICTURE" | translate }}
+                </mat-label>
+                <mat-icon matPrefix>cloud_upload</mat-icon>
+                <input
+                  matInput
+                  readonly
+                  class="file-form-field"
+                  [value]="pictureFileInput.value"
+                />
+                <input
+                  #pictureFileInput
+                  type="file"
+                  accept="image/jpeg,image/png"
+                  class="d-none"
+                  (change)="handlePictureChange($event.target)"
+                />
+                <mat-error
+                  *ngIf="
+                    form.get('profilePicture')?.invalid &&
+                    (form.get('profilePicture')?.dirty ||
+                      form.get('profilePicture')?.touched) &&
+                    form.get('profilePicture')?.errors?.required
+                  "
+                >
+                  Profile picture is required.
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap">
+            <div class="col-12 p-2">
+              <div class="my-3 small">
+                <mat-checkbox
+                  class="me-1 mb-1"
+                  (change)="privacyPolicyAccepted = $event.checked"
+                ></mat-checkbox>
+                <span>
+                  {{
+                    "SERVICE_ORDER_PAGE.PRIVACY_POLICY_AGREEMENT" | translate
+                  }}
+                </span>
+                <mat-error
+                  *ngIf="!privacyPolicyAccepted && !form.disabled && form.valid"
+                >
+                  You must accept the privacy policy.
+                </mat-error>
+              </div>
+            </div>
+          </div>
+
+          <div class="my-3 text-center">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              class="w-100 py-1"
+              [disabled]="form.disabled || form.invalid"
+            >
+              <mat-spinner
+                color="warn"
+                class="d-inline-block"
+                [diameter]="24"
+                *ngIf="form.disabled"
+              ></mat-spinner>
+              <span class="mx-2">
+                {{ "FORM_LABELS.SUBMIT" | translate }}
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

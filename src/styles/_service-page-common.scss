@@ -1,0 +1,32 @@
+@use "sass:map";
+
+@mixin step-styles($step-indicator, $dir) {
+  .step.#{$dir} {
+    @each $breakpoint, $value in (sm: 0, md: 768px, lg: 1024px) {
+      @media (min-width: $value) {
+        @for $index from 1 through 8 {
+          $indicator: map.get(map.get($step-indicator, $index), $breakpoint);
+          &:nth-child(#{$index}) {
+            order: map.get($indicator, order);
+          }
+          &:nth-child(#{$index}):not(:last-child)::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            width: map.get($indicator, width);
+            height: map.get($indicator, height);
+            left: map.get($indicator, left);
+            right: map.get($indicator, right);
+            top: map.get($indicator, top);
+            bottom: map.get($indicator, bottom);
+            background: linear-gradient(
+              map.get($indicator, bg-deg),
+              rgba(13, 13, 13, 0) 0%,
+              rgba(247, 134, 40, 1) 100%
+            );
+          }
+        }
+      }
+    }
+  }
+}
