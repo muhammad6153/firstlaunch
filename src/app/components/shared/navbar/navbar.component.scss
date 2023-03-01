@@ -7,5 +7,19 @@
 }
 
 .sticky-top {
+  position: fixed;
   z-index: 999 !important;
+}
+.nav-link {
+  font-size: 18px !important;
+}
+.mat-button {
+  font-size: 18px;
+}
+.mat-toolbar {
+  background: transparent;
+  color: white;
+}
+.mat-elevation-z11 {
+  background-color: #212121;
 }

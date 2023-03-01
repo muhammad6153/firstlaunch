@@ -1,7 +1,7 @@
 @import "../../../../styles/colors";
 
 .heading-section {
-  // height: calc(100vh - 77px);
+  height: 100vh;
 }
 
 .heading-section video {
@@ -36,11 +36,31 @@
 .slide:focus {
   outline: none;
 }
- section.heading-section button.slick-next.slick-arrow {
-   right: 25px;
- }
- .slick-prev:before,
- .slick-next:before {
+.heading-section ::ng-deep h1{
+  font-size: 31px;
+  line-height: 40px;
+}
+.heading-section ::ng-deep .transform-50{
+  transform: translateY(-50%);
+}
+.heading-section ::ng-deep video{
+  height: 100vh;
+}
+.heading-section ::ng-deep .player{
+  background-color: #fff;
+    color: #f6980f;
+height: 100px;
+  width: 100px;
+}
+.heading-section ::ng-deep .slick-prev{
+  left: 50px;
+      z-index: 1;
+}.heading-section ::ng-deep .slick-next {
+  right: 50px;
+      z-index: 1;
+}
+.heading-section ::ng-deep .slick-prev:before,
+.heading-section ::ng-deep .slick-next:before {
   font-family: "slick";
   font-size: 40px;
   line-height: 1;
@@ -50,4 +70,8 @@
   -moz-osx-font-smoothing: grayscale;
   /* height: 100%; */
   /* width: 100%; */
+}
+.heading-section ::ng-deep .mat-raised-button{
+    font-size: 16px;
+    font-weight: 600;
 }
