@@ -1,0 +1,12 @@
+.talent-track-card figure {
+  height: 200px;
+  width: 200px;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms ease-in-out;
+}
+
+.talent-track-card:hover figure {
+  background-size: 150%;
+}

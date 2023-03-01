@@ -35,6 +35,7 @@ import {
   NgxGoogleAnalyticsRouterModule,
 } from "ngx-google-analytics";
 import { SlickCarouselModule } from "ngx-slick-carousel";
+import { ServicesCardComponent } from './components/landing/services-card/services-card.component';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, "assets/i18n/", ".json");
@@ -63,6 +64,7 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     PartnershipFormPageComponent,
     CollaboratorsFormPageComponent,
     TeamPageComponent,
+    ServicesCardComponent,
   ],
   imports: [
     BrowserModule,
