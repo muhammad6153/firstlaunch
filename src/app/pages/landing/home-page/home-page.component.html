@@ -1,8 +1,45 @@
 <section
   class="heading-section d-inline-block position-relative w-100 overflow-hidden"
 >
-  <video autoplay loop class="position-absolute top-0 start-0 h-100 bg-dark">
-    <source src="assets/videos/landing-video.mp4" type="video/mp4" />
+    <ngx-slick-carousel class="carousel col-12  mt-0 mb-3" [config]="videoSlideConfig">
+      <div ngxSlickItem *ngFor="let bannervideo of bannervideos" class="slide h-100">
+        <div class="w-100 rounded mat-elevation-z24 overflow-hidden position-relative">
+          <video autoplay loop  [muted]="'muted'" class="">
+            <source [src]="bannervideo.src" type="video/mp4" />
+          </video>
+          <div class="video-overlay d-inline-block position-absolute top-0 start-0 h-100 w-100 mat-app-background"></div>
+          <div class="position-absolute w-100 h-100 left-0 top-0 d-flex align-items-center justify-content-center"
+                  style="background-color: rgba(0, 0, 0, 0)">
+            <div class="d-flex flex-wrap justify-content-start py-5 align-items-end container w-100 h-100">
+              <div class="col-12 col-lg-6 text-start">
+                <div style="transform: translateY(-50%);">
+                 <h1 class="mb-5 mat-display-1 position-relative text-start" style="font-size: 40px;      line-height: 44px;">
+                  <strong> {{ "HOME_PAGE.HEADING_SECTION.TITLE_PREFIX" | translate }}
+                  <span class="fw-bold border-bottom border-3 border-primary">
+                  {{ "HOME_PAGE.HEADING_SECTION.TITLE" | translate }}
+                  </span>
+                  {{ "HOME_PAGE.HEADING_SECTION.TITLE_SUFFIX" | translate }}</strong>
+                </h1>
+                <a mat-raised-button class="text-decoration-none px-4 py-1" routerLink="/services" color="primary">
+                  {{ "HOME_PAGE.HEADING_SECTION.CALL_TO_ACTION_LINK" | translate }}
+                </a>
+                <button mat-raised-button style="background-color: #fff; color: #f6980f" class="p-3 mx-4 rounded-circle mat-elevation-z24"
+                  (click)="openDialog(bannervideo)">
+                  <mat-icon>play_arrow</mat-icon>
+                </button>
+              </div>
+             </div>
+           </div>
+         </div>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+</section>
+
+
+
+  <!-- <video autoplay loop muted="muted" class="position-absolute top-0 start-0 h-100 bg-dark">
+    <source src="assets/videos/banner/banner-1.mp4" type="video/mp4" />
   </video>
   <div
     class="video-overlay d-inline-block position-absolute top-0 start-0 h-100 w-100 mat-app-background"
@@ -28,7 +65,7 @@
       </a>
     </div>
   </div>
-</section>
+</section>-->
 
 
 <section class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5 container" id="service">

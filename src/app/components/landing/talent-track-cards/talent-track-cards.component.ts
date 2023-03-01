@@ -8,7 +8,7 @@ import type { Subscription } from "rxjs";
   templateUrl: "./talent-track-cards.component.html",
   styleUrls: ["./talent-track-cards.component.scss"],
 })
-export class ServiceCardsComponent implements OnInit, OnDestroy {
+export class TalentTrackCardsComponent implements OnInit, OnDestroy {
   @Input()
   public plan!: string;
 

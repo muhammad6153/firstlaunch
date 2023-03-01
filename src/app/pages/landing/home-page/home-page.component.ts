@@ -120,6 +120,21 @@ export class HomePageComponent implements OnInit, OnDestroy {
     },
   ];
 
+  public bannervideos = [
+    {
+      src: "assets/videos/banner/banner-1.mp4",
+    },
+    {
+      src: "assets/videos/banner/banner-2.mp4",
+    },
+        {
+      src: "assets/videos/banner/banner-3.mp4",
+    },
+
+
+  ];
+
+
   public rtl = false;
 
   public _slideConfig = {

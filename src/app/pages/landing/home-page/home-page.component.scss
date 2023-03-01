@@ -1,7 +1,7 @@
 @import "../../../../styles/colors";
 
 .heading-section {
-  height: calc(100vh - 77px);
+  // height: calc(100vh - 77px);
 }
 
 .heading-section video {
@@ -35,4 +35,19 @@
 
 .slide:focus {
   outline: none;
+}
+ section.heading-section button.slick-next.slick-arrow {
+   right: 25px;
+ }
+ .slick-prev:before,
+ .slick-next:before {
+  font-family: "slick";
+  font-size: 40px;
+  line-height: 1;
+  color: #f6980f;
+  opacity: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* height: 100%; */
+  /* width: 100%; */
 }

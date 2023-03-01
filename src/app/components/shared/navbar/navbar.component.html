@@ -19,18 +19,13 @@
     >
       <div class="navbar-nav mx-auto">
         <a
-          routerLink="/"
-          routerLinkActive="mat-primary"
-          class="nav-link my-2 my-lg-0"
-          mat-button
-          (click)="navbarMenuVisible = false"
-          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="scroll('service')" class="mat-focus-indicator nav-link my-2 my-lg-0 mat-button mat-button-base"
         >
           {{ "NAVBAR.LINKS.CONTACT_US" | translate }}
         </a>
-        <a (click)="scroll('service')" class="mat-focus-indicator nav-link my-2 my-lg-0 mat-button mat-button-base">
+        <!-- <a (click)="scroll('service')" class="mat-focus-indicator nav-link my-2 my-lg-0 mat-button mat-button-base">
           {{ "NAVBAR.LINKS.SERVICES" | translate }}
-        </a>
+        </a> -->
         <a (click)="scroll('about-us')" class="mat-focus-indicator nav-link my-2 my-lg-0 mat-button mat-button-base">
           {{ "NAVBAR.LINKS.ABOUT_US" | translate }}
         </a>
