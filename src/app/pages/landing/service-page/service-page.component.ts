@@ -2,7 +2,7 @@ import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { concatMap, map, tap } from "rxjs/operators";
-import type { Service } from "@/app/models/service";
+import type { TalentTrack } from "@/app/models/talent-track";
 import { Subscription } from "rxjs";
 import { DOCUMENT } from "@angular/common";
 import { MatThemeService } from "@/app/services/mat-theme.service";
@@ -18,7 +18,7 @@ export class ServicePageComponent implements OnInit, OnDestroy {
   private readonly document: Document;
   private readonly matThemeService: MatThemeService;
   public subscriptions: Subscription[];
-  public service?: Service;
+  public service?: TalentTrack;
   public plan: string;
   public loading: boolean;
   public direction: string;
@@ -64,7 +64,7 @@ export class ServicePageComponent implements OnInit, OnDestroy {
         .pipe(
           concatMap((params) => {
             return this.httpClient
-              .get<Service[]>("/assets/data/talent-track.json")
+              .get<TalentTrack[]>("/assets/data/talent-track.json")
               .pipe(
                 map((x) => x.find((service) => service.name === params.service))
               );
@@ -91,7 +91,7 @@ export class ServicePageComponent implements OnInit, OnDestroy {
     return ["/pricing", this.service?.name ?? ""];
   }
 
-  private setPageTitle(service?: Service): void {
+  private setPageTitle(service?: TalentTrack): void {
     const name = service?.name?.replace("-", " ") ?? "";
     const capitalizedName = name[0].toUpperCase() + name.slice(1, name.length);
     this.document.title = `${capitalizedName} - First Launch`;

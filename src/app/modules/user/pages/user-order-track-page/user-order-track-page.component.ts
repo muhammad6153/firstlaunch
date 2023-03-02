@@ -4,7 +4,7 @@ import { forkJoin, Observable, Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { catchError, switchMap } from "rxjs/operators";
 import type { Nullish } from "@/app/models/nullish";
-import { ServicesService } from "@/app/services/services.service";
+import { TalentTrackService } from "@/app/services/talenttrack.service";
 import { BehaviorSubject, of } from "rxjs";
 import OrderTrack from "@/app/models/order-track";
 import type { NewCommentEvent } from "@components/shared/text-editor/text-editor.component";
@@ -18,7 +18,7 @@ import { v4 as uuid } from "uuid";
 })
 export class UserOrderTrackPageComponent implements OnInit, OnDestroy {
   private readonly ordersService: OrdersService;
-  private readonly servicesService: ServicesService;
+  private readonly TalentTrackService: TalentTrackService;
   private readonly route: ActivatedRoute;
   private readonly awsService: AwsService;
   private orderTrackSubscription: Subscription;
@@ -30,12 +30,12 @@ export class UserOrderTrackPageComponent implements OnInit, OnDestroy {
   constructor(
     route: ActivatedRoute,
     ordersService: OrdersService,
-    servicesService: ServicesService,
+    TalentTrackService: TalentTrackService,
     awsService: AwsService
   ) {
     this.route = route;
     this.ordersService = ordersService;
-    this.servicesService = servicesService;
+    this.TalentTrackService = TalentTrackService;
     this.awsService = awsService;
     this.orderTrackLoaderSubject = new BehaviorSubject(null);
     this.orderTrackSubscription = Subscription.EMPTY;
@@ -52,7 +52,7 @@ export class UserOrderTrackPageComponent implements OnInit, OnDestroy {
         switchMap((track) => {
           this.orderTrack = track;
           if (track && track.orderService) {
-            return this.servicesService.fetchService(track.orderService);
+            return this.TalentTrackService.fetchService(track.orderService);
           }
           return of(null);
         })

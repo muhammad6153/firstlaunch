@@ -12,19 +12,19 @@ export class ServicesCardComponent implements OnInit {
   @Input()
   public plan!: string;
 
-  private readonly servicesService: ServicesService;
+  private readonly ServicesService: ServicesService;
 
   public services: Service[];
   public subscription?: Subscription;
 
-  constructor(servicesService: ServicesService) {
-    this.servicesService = servicesService;
+  constructor(ServicesService: ServicesService) {
+    this.ServicesService = ServicesService;
     this.services = [];
   }
 
   public ngOnInit(): void {
-    this.servicesService.fetchServices();
-    this.subscription = this.servicesService.services.subscribe((services) => {
+    this.ServicesService.fetchServices();
+    this.subscription = this.ServicesService.services.subscribe((services) => {
       this.services = services;
     });
   }

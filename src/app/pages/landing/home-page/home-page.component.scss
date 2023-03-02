@@ -40,7 +40,7 @@
   font-size: 31px;
   line-height: 40px;
 }
-.heading-section ::ng-deep .transform-50{
+.heading-section ::ng-deep .transformY-50{
   transform: translateY(-50%);
 }
 .heading-section ::ng-deep video{
@@ -49,17 +49,22 @@
 .heading-section ::ng-deep .player{
   background-color: #fff;
     color: #f6980f;
-height: 100px;
-  width: 100px;
+    height: 70px;
+      width: 70px;
 }
+.about-section ::ng-deep .slick-prev,
 .heading-section ::ng-deep .slick-prev{
   left: 50px;
       z-index: 1;
-}.heading-section ::ng-deep .slick-next {
+}
+.about-section ::ng-deep .slick-next,
+.heading-section ::ng-deep .slick-next {
   right: 50px;
       z-index: 1;
 }
+.about-section ::ng-deep .slick-prev:before,
 .heading-section ::ng-deep .slick-prev:before,
+.about-section ::ng-deep .slick-next:before,
 .heading-section ::ng-deep .slick-next:before {
   font-family: "slick";
   font-size: 40px;
@@ -68,10 +73,29 @@ height: 100px;
   opacity: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* height: 100%; */
-  /* width: 100%; */
 }
 .heading-section ::ng-deep .mat-raised-button{
     font-size: 16px;
     font-weight: 600;
+}
+
+.about-section h1.mat-headline {
+    font-size: 30px;
+
+}
+
+
+.about-section h1.mat-headline span.transform-X {
+    font-size: 82px;
+      display: block;
+      transform: translateX(-200px);
+      width: max-content;
+      line-height: 120%;
+      font-weight: 800;
+      margin-top: 10px;
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 120%;
 }

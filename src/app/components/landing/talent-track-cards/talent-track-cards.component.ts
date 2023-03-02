@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
-import type { Service } from "@/app/models/service";
-import { ServicesService } from "@/app/services/services.service";
+import type { TalentTrack } from "@/app/models/talent-track";
+import { TalentTrackService } from "@/app/services/talenttrack.service";
 import type { Subscription } from "rxjs";
 
 @Component({
@@ -12,19 +12,19 @@ export class TalentTrackCardsComponent implements OnInit, OnDestroy {
   @Input()
   public plan!: string;
 
-  private readonly servicesService: ServicesService;
+  private readonly TalentTrackService: TalentTrackService;
 
-  public services: Service[];
+  public services: TalentTrack[];
   public subscription?: Subscription;
 
-  constructor(servicesService: ServicesService) {
-    this.servicesService = servicesService;
+  constructor(TalentTrackService: TalentTrackService) {
+    this.TalentTrackService = TalentTrackService;
     this.services = [];
   }
 
   public ngOnInit(): void {
-    this.servicesService.fetchServices();
-    this.subscription = this.servicesService.services.subscribe((services) => {
+    this.TalentTrackService.fetchServices();
+    this.subscription = this.TalentTrackService.services.subscribe((services) => {
       this.services = services;
     });
   }

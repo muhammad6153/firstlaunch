@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { OrdersService } from "@modules/admin/services/orders.service";
-import { ServicesService } from "@/app/services/services.service";
+import { TalentTrackService } from "@/app/services/talenttrack.service";
 import { ActivatedRoute } from "@angular/router";
 import { BehaviorSubject, forkJoin, Observable, of, Subscription } from "rxjs";
 import { Nullish } from "@/app/models/nullish";
@@ -17,7 +17,7 @@ import { v4 as uuid } from "uuid";
 })
 export class AdminOrderTrackPageComponent implements OnInit, OnDestroy {
   private readonly ordersService: OrdersService;
-  private readonly servicesService: ServicesService;
+  private readonly TalentTrackService: TalentTrackService;
   private readonly route: ActivatedRoute;
   private readonly awsService: AwsService;
   private orderTrackSubscription: Subscription;
@@ -29,12 +29,12 @@ export class AdminOrderTrackPageComponent implements OnInit, OnDestroy {
   constructor(
     route: ActivatedRoute,
     ordersService: OrdersService,
-    servicesService: ServicesService,
+    TalentTrackService: TalentTrackService,
     awsService: AwsService
   ) {
     this.route = route;
     this.ordersService = ordersService;
-    this.servicesService = servicesService;
+    this.TalentTrackService = TalentTrackService;
     this.awsService = awsService;
     this.orderTrackLoaderSubject = new BehaviorSubject(null);
     this.orderTrackSubscription = Subscription.EMPTY;
@@ -51,7 +51,7 @@ export class AdminOrderTrackPageComponent implements OnInit, OnDestroy {
         switchMap((track) => {
           this.orderTrack = track;
           if (track && track.orderService) {
-            return this.servicesService.fetchService(track.orderService);
+            return this.TalentTrackService.fetchService(track.orderService);
           }
           return of(null);
         })

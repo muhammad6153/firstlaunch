@@ -1,23 +1,23 @@
 [
   {
     "name": "packages",
-    "title": "Packages",
+    "title": "Packages ",
     "slogan": "Starting from",
     "price": "4,880 SR",
-    "imageUrl": "assets/images/services/bg/service-writing.png"
+    "imageUrl": "assets/images/services/packages.jpg"
   },
   {
     "name": "training",
     "title": "Training",
     "slogan": "Starting from",
     "price": "299 SR",
-    "imageUrl": "assets/images/services/bg/service-writing.png"
+    "imageUrl": "assets/images/services/training.jpg"
   },
   {
     "name": "audition",
     "title": "Audition",
     "slogan": "Starting from",
     "price": "490 SR",
-    "imageUrl": "assets/images/services/bg/service-writing.png"
+    "imageUrl": "assets/images/services/audition.jpg"
   }
 ]

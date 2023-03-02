@@ -9,7 +9,7 @@ import { UserInvoicePageComponent } from "@modules/user/pages/user-invoice-page/
 import { UserInvoicesPageComponent } from "@modules/user/pages/user-invoices-page/user-invoices-page.component";
 import { UserProfilePageComponent } from "@modules/user/pages/user-profile-page/user-profile-page.component";
 import { UserOrderTrackPageComponent } from "@modules/user/pages/user-order-track-page/user-order-track-page.component";
-import { ServicesService } from "@/app/services/services.service";
+import { TalentTrackService } from "@/app/services/talenttrack.service";
 import { UserComponent } from "@modules/user/user.component";
 import { DashboardModule } from "@modules/shared/dashboard/dashboard.module";
 import { PayInvoicePageComponent } from "@modules/user/pages/pay-invoice-page/pay-invoice-page.component";
@@ -26,7 +26,7 @@ import { PayInvoicePageComponent } from "@modules/user/pages/pay-invoice-page/pa
     PayInvoicePageComponent,
   ],
   imports: [CommonModule, UserRoutingModule, DashboardModule],
-  providers: [OrdersService, InvoicesService, ServicesService],
+  providers: [OrdersService, InvoicesService, TalentTrackService],
   bootstrap: [UserComponent],
 })
 export class UserModule {}

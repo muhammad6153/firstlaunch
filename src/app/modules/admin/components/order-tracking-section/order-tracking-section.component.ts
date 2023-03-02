@@ -7,12 +7,12 @@ import {
   OnInit,
   Output,
 } from "@angular/core";
-import { ServicesService } from "@/app/services/services.service";
+import { TalentTrackService } from "@/app/services/talenttrack.service";
 import { BehaviorSubject, of, Subscription } from "rxjs";
 import type { Nullish } from "@/app/models/nullish";
 import { catchError, switchMap } from "rxjs/operators";
 import { OrdersService } from "@modules/admin/services/orders.service";
-import type { Service } from "@/app/models/service";
+import type { TalentTrack } from "@/app/models/talent-track";
 import OrderTrack from "@/app/models/order-track";
 
 @Component({
@@ -22,7 +22,7 @@ import OrderTrack from "@/app/models/order-track";
 })
 export class OrderTrackingSectionComponent
   implements OnInit, OnChanges, OnDestroy {
-  private readonly servicesService: ServicesService;
+  private readonly TalentTrackService: TalentTrackService;
   private readonly ordersService: OrdersService;
 
   @Input()
@@ -40,8 +40,8 @@ export class OrderTrackingSectionComponent
   public steps: string[];
   public loading: boolean;
 
-  constructor(servicesService: ServicesService, ordersService: OrdersService) {
-    this.servicesService = servicesService;
+  constructor(TalentTrackService: TalentTrackService, ordersService: OrdersService) {
+    this.TalentTrackService = TalentTrackService;
     this.ordersService = ordersService;
     this.orderTrack = null;
     this.orderTrackUpdated = new EventEmitter();
@@ -57,7 +57,7 @@ export class OrderTrackingSectionComponent
     this.orderSubscription = this.$orderTrackSubject
       .pipe(
         switchMap((orderTrack) =>
-          this.servicesService.fetchService(orderTrack?.orderService ?? "")
+          this.TalentTrackService.fetchService(orderTrack?.orderService ?? "")
         )
       )
       .subscribe(this.handleOrderSubscription.bind(this));
@@ -94,7 +94,7 @@ export class OrderTrackingSectionComponent
     this.updateOrderSubscription.unsubscribe();
   }
 
-  private handleOrderSubscription(service: Nullish<Service>): void {
+  private handleOrderSubscription(service: Nullish<TalentTrack>): void {
     if (service) {
       this.steps = service.orderSteps;
       this.loading = false;

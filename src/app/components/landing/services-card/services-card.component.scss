@@ -1,12 +1,30 @@
-.talent-track-card figure {
-  height: 200px;
-  width: 200px;
+.service-card figure {
+  height: 280px;
+  width: 280px;
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
   transition: background-size 400ms ease-in-out;
+  margin-bottom: 10px;border: solid 5px #f6980f;
+}
+.service-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.talent-track-card:hover figure {
-  background-size: 150%;
+.service-card:hover img {
+  transform: scale(1.5);
+  transition: 400ms ease-in-out;
+}
+.service-card h2.mat-app-background{
+    font-size: 35px;
+    font-weight: 500;margin-bottom: 10px;
+ }
+.service-card p {
+  font-size: 18px;
+}
+.service-card p.price {
+  color: #fff;
+  font-size: 22px;
 }

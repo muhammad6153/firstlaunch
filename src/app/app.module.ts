@@ -22,7 +22,7 @@ import { LandingLayoutComponent } from "@layouts/landing-layout/landing-layout.c
 import { NavbarComponent } from "@components/shared/navbar/navbar.component";
 import { FooterComponent } from "@components/shared/footer/footer.component";
 import { TalentTrackCardsComponent } from "@components/landing/talent-track-cards/talent-track-cards.component";
-import { ServicesService } from "@/app/services/services.service";
+import { TalentTrackService } from "@/app/services/talenttrack.service";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { RefundPolicyPageComponent } from "@pages/landing/refund-policy-page/refund-policy-page.component";
@@ -36,7 +36,7 @@ import {
 } from "ngx-google-analytics";
 import { SlickCarouselModule } from "ngx-slick-carousel";
 import { ServicesCardComponent } from './components/landing/services-card/services-card.component';
-
+import { ServicesService } from "@/app/services/services.service";
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, "assets/i18n/", ".json");
 }
@@ -87,7 +87,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     NgxGoogleAnalyticsRouterModule.forRoot({ exclude: [/^\/admin\/.*/] }),
     SlickCarouselModule,
   ],
-  providers: [ServicesService],
+  providers: [TalentTrackService,
+    ServicesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -12,7 +12,7 @@
                   style="background-color: rgba(0, 0, 0, 0)">
             <div class="d-flex flex-wrap justify-content-start py-5 align-items-end container w-100 h-100">
               <div class="col-12 col-lg-6 text-start">
-                <div class="transform-50">
+                <div class="transformY-50">
                  <h1 class="mb-5 mat-display-1 position-relative text-start" >
                   <strong> {{ bannervideo.title_prefix  | translate }}
                   <span class="fw-bold border-bottom border-3 border-primary">
@@ -78,7 +78,9 @@
       {{ "SERVICES_SECTION.TITLE" | translate }}
     </h1>
   </div>
-  <app-services-card></app-services-card>
+  <div class="col-12">
+    <app-services-card></app-services-card>
+  </div>
 </section>
 
 <!-- <section
@@ -101,54 +103,46 @@
 </section> -->
 
 <section class="about-section py-5 my-5 container" id="about-us">
+
   <div class="d-flex justify-content-center align-items-center flex-wrap w-100">
-    <div class="col-12 col-lg-6 my-3 px-lg-4">
+    <div class="col-12 col-lg-4 my-3 ">
+      <img src="/assets/images/about.png" class="w-100" alt="About First Launch" />
+    </div>
+    <div class="offset-lg-1 col-12 col-lg-7 my-3 ">
       <h1 class="mat-headline">
         {{ "HOME_PAGE.ABOUT_SECTION.TITLE_PREFIX" | translate }}
-        <span class="fw-bold border-bottom border-3 border-primary">
+        <span class="fw-bold text-primary">
           {{ "HOME_PAGE.ABOUT_SECTION.TITLE" | translate }}
         </span>
-        {{ "HOME_PAGE.ABOUT_SECTION.TITLE_SUFFIX" | translate }}
+        <span class="transform-X">
+          {{ "HOME_PAGE.ABOUT_SECTION.TITLE_SUFFIX" | translate }}
+        </span>
       </h1>
-      <p class="text-justify">
+      <p class="">
         {{ "HOME_PAGE.ABOUT_SECTION.PARAGRAPH_0" | translate }}
       </p>
-      <p class="text-justify">
+      <p class="">
         {{ "HOME_PAGE.ABOUT_SECTION.PARAGRAPH_1" | translate }}
       </p>
     </div>
-    <ngx-slick-carousel
-      class="carousel col-12 col-lg-6 my-3"
-      [config]="videoSlideConfig"
-    >
+  </div>
+</section>
+<section class="about-section py-5 my-5 container" >
+    <ngx-slick-carousel class="carousel col-12  my-3" [config]="videoSlideConfig">
       <div ngxSlickItem *ngFor="let video of videos" class="slide h-100">
-        <div
-          class="w-100 rounded mat-elevation-z24 overflow-hidden position-relative"
-        >
-          <img
-            [src]="video.thumb"
-            alt="Motion Graphics Video"
-            class="d-block w-100 h-100"
-          />
-          <div
-            class="position-absolute w-100 h-100 left-0 top-0 d-flex align-items-center justify-content-center"
-            style="background-color: rgba(0, 0, 0, 0.4)"
-          >
-            <button
-              mat-raised-button
-              color="primary"
-              class="p-3 rounded-circle mat-elevation-z24"
-              (click)="openDialog(video)"
-            >
+        <div class="w-100 rounded mat-elevation-z24 overflow-hidden position-relative">
+          <img [src]="video.thumb" alt="Motion Graphics Video" class="d-block w-100 h-100" />
+          <div class="position-absolute w-100 h-100 left-0 top-0 d-flex align-items-center justify-content-center"
+            style="background-color: rgba(0, 0, 0, 0.4)">
+            <button mat-raised-button color="primary" class="p-3 rounded-circle mat-elevation-z24"
+              (click)="openDialog(video)">
               <mat-icon>play_arrow</mat-icon>
             </button>
           </div>
         </div>
       </div>
     </ngx-slick-carousel>
-  </div>
 </section>
-
 <section
   class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5 container" id="talent-track"
 >
