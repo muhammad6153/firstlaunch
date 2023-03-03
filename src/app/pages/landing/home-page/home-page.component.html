@@ -72,14 +72,16 @@
 </section>-->
 
 
-<section class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5 container" id="service">
-  <div class="col-12 text-center">
-    <h1 class="section-title mat-display-1 d-inline-block mb-3 px-2 position-relative mat-app-background">
-      {{ "SERVICES_SECTION.TITLE" | translate }}
-    </h1>
-  </div>
-  <div class="col-12">
-    <app-services-card></app-services-card>
+<section class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 mt-5 " id="service">
+  <div class="container">
+    <div class="col-12 text-center">
+      <h1 class="section-title mat-display-1 d-inline-block mb-3 px-2 position-relative mat-app-background">
+        {{ "SERVICES_SECTION.TITLE" | translate }}
+      </h1>
+    </div>
+    <div class="col-12">
+      <app-services-card></app-services-card>
+    </div>
   </div>
 </section>
 
@@ -102,34 +104,34 @@
   </div>
 </section> -->
 
-<section class="about-section py-5 my-5 container" id="about-us">
-
-  <div class="d-flex justify-content-center align-items-center flex-wrap w-100">
-    <div class="col-12 col-lg-4 my-3 ">
-      <img src="/assets/images/about.png" class="w-100" alt="About First Launch" />
-    </div>
-    <div class="offset-lg-1 col-12 col-lg-7 my-3 ">
-      <h1 class="mat-headline">
-        {{ "HOME_PAGE.ABOUT_SECTION.TITLE_PREFIX" | translate }}
-        <span class="fw-bold text-primary">
-          {{ "HOME_PAGE.ABOUT_SECTION.TITLE" | translate }}
-        </span>
-        <span class="transform-X">
-          {{ "HOME_PAGE.ABOUT_SECTION.TITLE_SUFFIX" | translate }}
-        </span>
-      </h1>
-      <p class="">
-        {{ "HOME_PAGE.ABOUT_SECTION.PARAGRAPH_0" | translate }}
-      </p>
-      <p class="">
-        {{ "HOME_PAGE.ABOUT_SECTION.PARAGRAPH_1" | translate }}
-      </p>
+<section class="about-section py-5 mat-app-background-dark " id="about-us">
+  <div class="container py-5">
+    <div class="d-flex justify-content-center align-items-center flex-wrap w-100">
+      <div class="col-12 col-lg-4 my-3 ">
+        <img src="/assets/images/about.png"   class="w-100" id="leftToRight" alt="About First Launch" />
+      </div>
+      <div class="offset-lg-1 col-12 col-lg-7 my-3 " id="textAnim">
+        <h1 class="mat-headline">
+          {{ "HOME_PAGE.ABOUT_SECTION.TITLE_PREFIX" | translate }}
+          <span class="fw-bold text-primary">
+            {{ "HOME_PAGE.ABOUT_SECTION.TITLE" | translate }}
+          </span>
+          <span class="transform-X">
+            {{ "HOME_PAGE.ABOUT_SECTION.TITLE_SUFFIX" | translate }}
+          </span>
+        </h1>
+        <p class="">
+          {{ "HOME_PAGE.ABOUT_SECTION.PARAGRAPH_0" | translate }}
+        </p>
+        <p class="">
+          {{ "HOME_PAGE.ABOUT_SECTION.PARAGRAPH_1" | translate }}
+        </p>
+      </div>
     </div>
   </div>
 </section>
-<section class="about-section py-5 my-5 container" >
-    <ngx-slick-carousel class="carousel col-12  my-3" [config]="videoSlideConfig">
-      <div ngxSlickItem *ngFor="let video of videos" class="slide h-100">
+<section class="about-section py-5 my-5 container d-flex justify-content-center align-items-center flex-wrap w-100"  id="about-slider" >
+      <div *ngFor="let video of videos" class=" col-lg-6 px-3 h-100">
         <div class="w-100 rounded mat-elevation-z24 overflow-hidden position-relative">
           <img [src]="video.thumb" alt="Motion Graphics Video" class="d-block w-100 h-100" />
           <div class="position-absolute w-100 h-100 left-0 top-0 d-flex align-items-center justify-content-center"
@@ -141,19 +143,20 @@
           </div>
         </div>
       </div>
-    </ngx-slick-carousel>
 </section>
 <section
-  class="services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5 container" id="talent-track"
+  class="mat-app-background-dark services-section d-flex justify-content-center align-items-center flex-wrap w-100 py-5 my-5" id="talent-track"
 >
-  <div class="col-12 text-center">
-    <h1
-      class="section-title mat-display-1 d-inline-block mb-3 px-2 position-relative mat-app-background"
-    >
-      {{ "TALENT_SECTION.TITLE" | translate }}
-    </h1>
-  </div>
-  <app-talent-track-cards></app-talent-track-cards>
+  <div class="container pt-5">
+    <div class="col-12 text-center">
+      <h1
+        class="section-title mat-display-1 d-inline-block mb-3 px-2 position-relative mat-app-background-dark"
+      >
+        {{ "TALENT_SECTION.TITLE" | translate }}
+      </h1>
+    </div>
+    <app-talent-track-cards></app-talent-track-cards>
+</div>
 </section>
 
 <section

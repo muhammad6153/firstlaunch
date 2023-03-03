@@ -6,6 +6,8 @@ import {
   TranslateService as NgxTranslateService,
 } from "@ngx-translate/core";
 import { Subscription } from "rxjs";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: "app-home-page",
@@ -130,7 +132,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     //   link: "/services",
     // },
     {
-      src: "assets/videos/banner/banner-1.mp4",
+      src: "assets/videos/banner/10. Showreel 2020-2021 video - A year of creating great moments (online-video-cutter.com)(1).mp4",
       title_prefix: "HOME_PAGE.HEADING_SECTION.TITLE_PREFIX",
       title: "HOME_PAGE.HEADING_SECTION.TITLE",
       title_suffix: "HOME_PAGE.HEADING_SECTION.TITLE_SUFFIX",
@@ -138,7 +140,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
       link: "/services",
     },
     {
-      src: "assets/videos/banner/banner-2.mp4",
+      src: "assets/videos/banner/10. Showreel 2020-2021 video - A year of creating great moments (online-video-cutter.com)(2).mp4",
       title_prefix: "HOME_PAGE.HEADING_SECTION.TITLE_PREFIX",
       title: "HOME_PAGE.HEADING_SECTION.TITLE",
       title_suffix: "HOME_PAGE.HEADING_SECTION.TITLE_SUFFIX",
@@ -146,7 +148,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
       link: "/services",
     },
     {
-      src: "assets/videos/banner/banner-3.mp4",
+      src: "assets/videos/banner/10. Showreel 2020-2021 video - A year of creating great moments (online-video-cutter.com).mp4",
       title_prefix: "HOME_PAGE.HEADING_SECTION.TITLE_PREFIX",
       title: "HOME_PAGE.HEADING_SECTION.TITLE",
       title_suffix: "HOME_PAGE.HEADING_SECTION.TITLE_SUFFIX",
@@ -219,6 +221,100 @@ export class HomePageComponent implements OnInit, OnDestroy {
         this.rtl = lang === "ar";
       }
     );
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Define the animation
+    const silderAnimation = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#about-slider',
+        start: 'top 80%',
+        end: 'bottom 100%',
+        scrub: true
+      }
+    });
+    silderAnimation.fromTo('#about-slider', { scale: 0.8, opacity: 0.5 }, { scale: 1, opacity: 1, duration: 1 });
+
+;
+
+
+
+
+const leftToRight = document.getElementById('leftToRight');
+
+  gsap.fromTo(
+    leftToRight,
+    {
+      opacity: 0.5,
+      x: 1000,
+    },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 1
+    }
+  );
+
+  ScrollTrigger.create({
+    trigger: leftToRight,
+    start: 'top 40%',
+    onEnter: () => {
+      gsap.to(leftToRight, {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "ease-out"
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(leftToRight, {
+        opacity: 0.5,
+        x: 1000,
+        delay: 0.5 ,
+        duration: 1,
+        ease: "ease-out"
+      });
+    },
+
+  });
+
+  const textAnim = document.getElementById('textAnim');
+
+  gsap.fromTo(
+    textAnim,
+    {
+      opacity: 0,
+      y: 100,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1
+    }
+  );
+
+  ScrollTrigger.create({
+    trigger: leftToRight,
+    start: 'top 40%',
+    onEnter: () => {
+      gsap.to(textAnim, {
+        opacity: 1,
+        y: 0,
+        delay: 0.5 ,
+        duration: 1,
+        ease: "ease-out"
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(textAnim, {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        ease: "ease-out"
+      });
+    },
+
+  });
+
   }
 
   public ngOnDestroy(): void {
